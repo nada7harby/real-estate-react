@@ -1,0 +1,38 @@
+real-estate/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── icons/
+│   │   └── fonts/
+│   ├── components/
+│   │   ├── common/
+│   │   │   └── (reusable components)
+│   │   ├── layout/
+│   │   │   └── (header, footer, etc.)
+│   │   └── pages/
+│   │       └── (page components)
+│   ├── hooks/
+│   │   └── (custom hooks)
+│   ├── services/
+│   │   └── (API calls, etc.)
+│   ├── styles/
+│   │   ├── base/
+│   │   │   ├── _variables.css
+│   │   │   └── _reset.css
+│   │   ├── components/
+│   │   └── pages/
+│   ├── utils/
+│   │   └── (helper functions)
+│   ├── config/
+│   │   └── (configuration files)
+│   ├── App.jsx
+│   └── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+└── vite.config.js
