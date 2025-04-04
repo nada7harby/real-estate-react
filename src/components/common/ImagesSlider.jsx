@@ -6,7 +6,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import Typography from '@mui/material/Typography';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-// import { baseUrl } from "./config";
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import img1 from '../../assets/images/img-1.jpg';
 import img2 from '../../assets/images/img-2.jpg';
@@ -15,7 +15,9 @@ import img4 from '../../assets/images/img-4.jpg';
 import img5 from '../../assets/images/img-5.jpg';
 import img6 from '../../assets/images/img-6.jpg';
 import imagesSliderStyles from '../../styles/components/images_slider.module.css'
-
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import ShareIcon from '@mui/icons-material/Share';
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -95,8 +97,9 @@ function CustomPaging() {
                       }}
                      src={img} alt="" />
         <div className={imagesSliderStyles['banner_info']}>
-        <div className="banner_info_title_pricing">
-        <Stack direction="row" spacing={1} >
+        <div className="banner_info_title_pricing flex justify-between items-center">
+            <div>
+        <Stack direction="row" spacing={1} sx={{marginBottom : "10px"}}>
         <Chip 
         label="For Sale"
         component="a"
@@ -122,7 +125,8 @@ function CustomPaging() {
         variant="outlined"
         clickable
         sx={{
-            color: "white",
+            color: "black",
+            background : "#fff",
             "&:hover": {
                 backgroundColor: "#1db2ff !important",
                 color: "white",
@@ -184,13 +188,44 @@ function CustomPaging() {
         <Stack
         direction="row"
         spacing={1}
-        sx={{marginTop : "10px"}}
+        sx={{marginTop : "10px" , display : "flex",justifyContent:"space-between" , alignItems : "center" , width : "90%"}}
         >
-        <LocationOnIcon sx={{color : "#1db2ff" ,  }} />
+            <Stack direction="row" spacing={2}>
+            <LocationOnIcon sx={{color : "#1db2ff" ,  }} />
           <Typography  variant="subtitle2" gutterBottom sx={{color: "rgba(255, 255, 255, 0.75)"}}>
             Merrick Way, Miami, FL 33134, USA
             </Typography>
+            </Stack >
+            <Stack direction="row" spacing={2}>
+            <Tooltip title="Share" placement="top" 
+            sx={{background : "#1a1a1a" , color : "#808080" ,    "&:hover": {
+                backgroundColor: "#1a1a1a !important",
+             },} }>
+                <IconButton>
+                    <ShareIcon/>
+                </IconButton>
+            </Tooltip>
+            <Tooltip title="Share" placement="top" 
+            sx={{background : "#1a1a1a" , color : "#808080" ,    "&:hover": {
+                backgroundColor: "#1a1a1a !important",
+             },} }>
+                <IconButton>
+                    <ShareIcon/>
+                </IconButton>
+            </Tooltip>
+            <Tooltip title="Share" placement="top" 
+            sx={{background : "#1a1a1a" , color : "#808080" ,    "&:hover": {
+                backgroundColor: "#1a1a1a !important",
+             },} }>
+                <IconButton>
+                    <ShareIcon/>
+                </IconButton>
+            </Tooltip>
+       
+            </Stack>
         </Stack>
+            </div>
+          
         </div>
                 </div>
                 </div>

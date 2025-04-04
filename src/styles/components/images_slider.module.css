@@ -55,9 +55,11 @@
     top: 300px;
 }
 .banner_info{
-    bottom: 100px;
+    bottom: 20px;
     left: 40px;
     position: absolute;
+    margin-bottom: 10px;
+    /* width : 90%; */
 }
 .banner_info .white_chip{
     background-color: #fff !important;
