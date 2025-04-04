@@ -1,5 +1,12 @@
-import React from "react";
+import React, { Component, useEffect , useRef } from "react";
 import Slider from "react-slick";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import Typography from '@mui/material/Typography';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+// import { baseUrl } from "./config";
 import Container from '@mui/material/Container';
 import img1 from '../../assets/images/img-1.jpg';
 import img2 from '../../assets/images/img-2.jpg';
@@ -7,72 +14,222 @@ import img3 from '../../assets/images/img-3.jpg';
 import img4 from '../../assets/images/img-4.jpg';
 import img5 from '../../assets/images/img-5.jpg';
 import img6 from '../../assets/images/img-6.jpg';
-import imagesSliderStyles from '../../styles/components/images_slider.module.css';
+import imagesSliderStyles from '../../styles/components/images_slider.module.css'
 
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+      className={imagesSliderStyles['next-button']}
+        onClick={onClick}>
+            <NavigateNextIcon color="white" style={{color : "white"}}/> 
+        </div>
+      
+    );
+  }
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={imagesSliderStyles['prev-button']}
+        onClick={onClick}>
+            <NavigateBeforeIcon color="white" style={{color : "white"}}/> 
+
+        </div>
+      
+    );
+  }
 function CustomPaging() {   
-  const images = [img1, img2, img3, img4, img5, img6];
-
+  let images =[img1 , img2 , img3 , img4 , img5 , img6 ];
+  const sliderRef = useRef(null);
   const settings = {
-    dots: true,
+    // appendDots: dots => (
+    //     <div className={imagesSliderStyles['custom-dots-container']}>
+    //     {images.map((img, idx) => (
+    //       <div key={idx} className="custom-dot flex-1 " style={{margin : "10px" , width : "100px" , height : "100px" , borderRadius : "5px" , cursor : "pointer"}}>
+    //         <img
+    //           style={{ width: '100%', height: '100%', objectFit: 'cover' , borderRadius : "5px"}}
+    //           src={img}
+    //           alt={`Image ${idx}`}
+    //         />
+            
+    //       </div>
+    //     ))}
+    //   </div>
+    //   ),
+    
+    customPaging: function(i) {
+      return (
+        <div className="custom-dot">
+        <img src={images[i]} alt={`Image ${i}`} />
+        </div>
+        
+      );
+    },
+    dotsClass: `slick-dots slick-thumb ${imagesSliderStyles['slick-dots']}`,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: true,
-    fade: true,
-    // تخصيص شكل النقاط (الصور المصغرة)
-    customPaging: (i) => (
-      <div className={imagesSliderStyles['thumbnail-dot']}>
-        <img
-          src={images[i]}
-          alt={`Thumbnail ${i}`}
-        />
-      </div>
-    ),
-    // تخصيص الـ div المحيط بالنقاط
-    appendDots: dots => (
-      <div
-        style={{
-          borderRadius: "10px",
-          padding: "10px",
-          marginTop: "20px", // يمكنك تعديل هذه القيمة حسب الحاجة
-        }}
-      >
-        <ul style={{ 
-          margin: "0px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "30px",
-        }}> 
-          {dots} 
-        </ul>
-      </div>
-    ),
-    dotsClass: imagesSliderStyles['slick-dots'],
+    fade : true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
   };
-
+  useEffect(()=>{
+    console.log(imagesSliderStyles['slick-dots']);
+  },[])
   return (
-    <Container maxWidth="xl">
-      <div className="slider-container my-10">
-        <Slider {...settings}>
+    <Container maxWidth="xl" >
+       <div className="slider-container my-10">
+      <Slider ref={sliderRef}  {...settings}>
+        {images.map((img , idx) => {
+            return (
+                <div className="mt-10 relative" key={idx}>
+                    <img 
+                      style={{
+                        width: "100%",
+                        maxHeight: "600px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                     src={img} alt="" />
+        <div className={imagesSliderStyles['banner_info']}>
+        <div className="banner_info_title_pricing">
+        <Stack direction="row" spacing={1} >
+        <Chip 
+        label="For Sale"
+        component="a"
+        href="#basic-chip"
+        size="medium"
+        clickable
+        sx={{
+            backgroundColor: "#fff !important", 
+            color: "black",
+            borderColor: "#ccc",
+            "&:hover": {
+                backgroundColor: "#1db2ff !important",
+                color: "white",
+                cursor: "pointer",
+                borderColor: "#1db2ff"
+                },
+        }}
+        />
+        <Chip
+        label="Single Family"
+        component="a"
+        href="#basic-chip"
+        variant="outlined"
+        clickable
+        sx={{
+            color: "white",
+            "&:hover": {
+                backgroundColor: "#1db2ff !important",
+                color: "white",
+                cursor: "pointer",
+                borderColor: "#1db2ff"
+                },
+        }}
+        />
+        <Chip 
+        label="Featured"
+        component="a"
+        href="#basic-chip"
+        size="medium"
+        clickable
+        sx={{
+            backgroundColor: "#1db2ff !important", 
+            color: "white"
+        }}
+        
+        />
+        <Chip 
+        label="Hot"
+        component="a"
+        href="#basic-chip"
+        size="medium"
+        clickable
+        sx={{
+            backgroundColor: "#dd3333 !important", 
+            color: "white"
+        }}
+        
+        />
+        </Stack>
+        <Stack
+         direction="row"
+          spacing={2} 
+          sx={{ justifyContent: "center",
+            alignItems : "center",
+            display : "flex"}}
+          >
+        <Typography className="font-bold" variant="h4" gutterBottom style={{marginTop : "10px" , color : "white" , fontWeight : "bold"}}>
+        Home in Merrick Way
+        </Typography>
+        <Chip 
+        label="$540,000"
+        component="a"
+        href="#basic-chip"
+        sx={{
+            backgroundColor: "#1db2ff !important", 
+            color: "white",
+            fontSize : "30px",
+            fontWeight : "70px",
+            padding: "2px 8px",
+            marginTop : "20px"
+        }}
+        
+        />
+        </Stack>
+        <Stack
+        direction="row"
+        spacing={1}
+        sx={{marginTop : "10px"}}
+        >
+        <LocationOnIcon sx={{color : "#1db2ff" ,  }} />
+          <Typography  variant="subtitle2" gutterBottom sx={{color: "rgba(255, 255, 255, 0.75)"}}>
+            Merrick Way, Miami, FL 33134, USA
+            </Typography>
+        </Stack>
+        </div>
+                </div>
+                </div>
+            )
+        })}
+      </Slider>
+      <div className={imagesSliderStyles['custom-dots-container']} style={{ display: "flex", justifyContent: "center", marginTop: "20px" , width : "80%" }}>
           {images.map((img, idx) => (
-            <div key={idx} className="mt-10">
+            <div 
+              key={idx} 
+              onClick={() => sliderRef.current.slickGoTo(idx)} 
+              className="custom-dot"
+              style={{
+                margin: "10px",
+                width: "100px",
+                height: "100px",
+                borderRadius: "5px",
+                cursor: "pointer",
+                overflow: "hidden",
+                border: "2px solid transparent",
+                flex : 1
+              }}
+            >
               <img
                 style={{
                   width: "100%",
-                  maxHeight: "600px",
+                  height: "100%",
                   objectFit: "cover",
-                  borderRadius: "8px",
+                  borderRadius: "5px",
                 }}
                 src={img}
-                alt={`Slide ${idx}`}
+                alt={`Thumbnail ${idx}`}
               />
             </div>
           ))}
-        </Slider>
-      </div>
-    </Container>
+        </div>
+      
+    </div>
+ </Container>
   );
 }
 

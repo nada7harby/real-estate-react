@@ -1,9 +1,16 @@
 .custom-dots-container{
     margin-top: 100px;
-}
-.slick-dots{
     display: flex;
 }
+.custom-dots-container .custom-dot{
+    flex: 1;
+}
+.slick-dots{
+   
+        position: absolute;
+        bottom: -150px;
+    }
+
 .slick-dots .custom-dot{
     width: 50px !important;
     height: 50px !important;
@@ -11,6 +18,7 @@
     display: block;
     padding-top: 50%;
     cursor: pointer;
+    flex : 1
 }
 .slick-dots .custom-dot img{
     max-width : 100%;
@@ -20,4 +28,37 @@
     width: 40px;
     height: 40px;
     
+}
+.prev-button , .next-button{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a;
+    transition: 0.2s all linear;
+    z-index: 99;
+    box-shadow: 0px 0px 7px -2px #fff;
+    opacity: 1;
+    position: absolute;
+
+    cursor: pointer;
+
+}
+.prev-button{
+    left: -20px;
+    top: 300px;
+}
+.next-button{
+    right: -20px;
+    top: 300px;
+}
+.banner_info{
+    bottom: 100px;
+    left: 40px;
+    position: absolute;
+}
+.banner_info .white_chip{
+    background-color: #fff !important;
 }
