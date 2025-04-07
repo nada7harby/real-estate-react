@@ -5,8 +5,6 @@ import './App.css'
 import ImagesSlider from './components/common/ImagesSlider.jsx'
 import OverviewCmp from './components/common/overviewCmp.jsx'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
     <ImagesSlider/>
@@ -14,7 +12,7 @@ function App() {
     <OverviewCmp/>
   
     </>
-  )
+  );
 }
 
-export default App
+export default App;
