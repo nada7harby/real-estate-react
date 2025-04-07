@@ -1,0 +1,37 @@
+.calender_header{
+    background-color: var(--global-color-primary);
+    color: rgb(255, 255, 255);
+    padding: 3px;
+    border-radius: 30px;
+}
+.MuiDateCalendar-root{
+    box-shadow: 0 2px 8px rgba(var(--rh-global-color-primary-rgb), 0.3);
+    padding: 10px;
+}
+.MuiPickersPopper-root , .MuiPaper-root{
+    border-radius: 30px !important;
+}
+/* .MuiButtonBase-root {
+    } */
+.MuiPickersCalendarHeader-root .MuiButtonBase-root{
+    color: rgb(255, 255, 255) !important;    
+}
+.MuiDayCalendar-header span.MuiTypography-root{
+    font-weight: 700;
+} 
+.MuiPickersSlideTransition-root .MuiButtonBase-root{
+    background-color: var(--color-primary-light);
+}
+.MuiPickersSlideTransition-root  .Mui-selected{
+    background-color: var(--global-color-primary);
+}
+.MuiInputBase-root{
+    border-radius: 30px !important;
+    background: #fff;
+}
+.MuiInputBase-root::before{
+    border: 0px !important;
+}
+.MuiInputBase-root input{
+    padding-top: 15px;
+}
