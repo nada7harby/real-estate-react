@@ -1,6 +1,8 @@
 import React from "react";
 import Hero from "../common/Hero";
 import OurSwiper from "../common/Swiper";
+import ALLProprerties from "../common/ALLProprerties";
+import CustomPaging from "../common/ImagesSlider";
 
 export default function Home() {
   return (
@@ -11,6 +13,7 @@ export default function Home() {
         <h3 className="px-10 lg:px-0 lg:py-0  text-2xl"> Newest Properties Around You</h3>
         <OurSwiper></OurSwiper>
       </div>
+        <ALLProprerties/>
     </>
   );
 }
