@@ -96,15 +96,7 @@ export default function overviewCmp({detailsOverviews}) {
             <div className="content__wrapper">
               <div className="text-xl font-bold mt-10 mb-5">Description</div>
               <p className="text-lg">
-                Enchanting three bedroom, three bath home with spacious one
-                bedroom, one bath cabana, in-laws quarters. Charming living area
-                features fireplace and fabulous art deco details. Formal dining
-                room. Remodeled kitchen with granite countertops, white
-                cabinetry and stainless appliances. Lovely master bedroom has
-                updated bath, beautiful view of the pool. Guest bedrooms have
-                walk-in, cedar closets. Delightful backyard; majestic oaks
-                surround the free form pool and expansive patio, wet bar and
-                grill.
+               {detailsOverviews.description}
               </p>
             </div>
             {/* addition details */}
