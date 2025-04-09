@@ -12,7 +12,7 @@ This project is a real estate property listing application built with modern web
 ![Image](https://github.com/user-attachments/assets/3e74d2b3-e64f-4b0e-ab84-b27ef8f0754d)
 
 
-📌 Features
+## Features
 ✔ Property Listings – Display detailed property information including price, location, and features.
 ✔ Media Gallery – High-quality images, videos, and virtual tours.
 ✔ Interactive Map – Google Maps integration to show property location.
