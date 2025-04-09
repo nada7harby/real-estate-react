@@ -1,0 +1,22 @@
+.overview__box{
+    border-radius: 7px;
+    padding: 17px 20px;
+    transition: 0.2s all linear;
+    background: var(--color-primary-light);
+}
+.overview__box:hover{
+    box-shadow: 0 0 7px -2px rgba(0, 0, 0, 0.19);
+    background: var(--rh-color-white);
+}
+.title{
+    display: block;
+    width: 100%;
+    margin-bottom: 9px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--global-color-text);
+}
+.icon__wrapper svg{
+    color : var(--global-color-primary);
+}

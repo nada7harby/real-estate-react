@@ -1,0 +1,118 @@
+
+.comment__meta a:hover{
+    color: var(--global-color-primary);
+}
+a.reply__link {
+    color: var(--global-color-primary);
+}
+.comment__respond{
+    border-radius: 25px;
+    background: var(--color-primary-light);
+}
+.comment__respond textarea{
+    min-height: 140px;
+}
+/* #comments .common-notes{
+
+} */
+.form__field > label {
+    display: block;
+    /* margin-bottom: 4px; */
+    padding: 0 16px;
+    font-weight: 500;
+    color: var(--global-color-text);
+
+}
+.field__wrapper{
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    padding: 9px 15px;
+    line-height: 1;
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(var(--global-color-primary-rgb), 0.18);
+    background: var(--color-white);
+}
+.form__comment label{
+    align-self: start;
+}
+.form__textarea .icon{
+    margin-top: 7px;
+}
+.field__wrapper .icon{
+    transition: 0.2s all linear;
+    fill: #cccccc;
+}
+.form__textarea textarea{
+    display: block;
+    width: 100%;
+    border-bottom-color: transparent;
+    resize: none;
+    line-height: 1.6;
+    
+}
+.form__textarea textarea::placeholder{
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 4px;
+}
+.form__textarea textarea:hover{
+    border-bottom-color: transparent;
+}
+.form__textarea textarea:focus-visible{
+    outline: 0 !important;
+}
+input{
+    flex: 1;
+    padding: 6px 0;
+    margin: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    transition: 0.2s all linear;
+    border-bottom: 2px solid #f0f0f0;
+    color: var(--rh-global-color-text);
+}
+input:focus{
+    border-bottom-color: var(--global-color-primary);
+}
+.comment-form-cookies-consent{
+    border: 1px solid var(--global-color-primary);
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.comment-form-cookies-consent label{
+    display: flex
+    ;
+        gap: 15px;
+        padding: 13px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 60px;
+        border: 1px solid rgba(var(--rh-global-color-primary-rgb), 0.3);
+        color: #333;
+
+}
+.comment-form-cookies-consent input{
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+}
+.comment-form-cookies-consent label:before{
+    content: "";
+    display: block;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 2px solid #808080;
+    background: transparent;
+}
