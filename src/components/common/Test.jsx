@@ -1,63 +1,103 @@
-import React from 'react';
-import { Button } from "@mui/material";
-import { Icon } from '@iconify/react';
+import React from "react";
+import { Card, CardContent, Button, Avatar } from "@mui/material";
+import { Icon } from "@iconify/react";
+
+const agents = [
+  {
+    id: 1,
+    name: "John David",
+    agency: "Alice Estate Agency",
+    verified: true,
+    avatar: "https://img.heroui.chat/image/avatar?w=150&h=150&u=john",
+    properties: [
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop1",
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop2",
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop3",
+    ],
+  },
+  {
+    id: 2,
+    name: "Alice Brian",
+    agency: "Alice Estate Agency",
+    verified: true,
+    avatar: "https://img.heroui.chat/image/avatar?w=150&h=150&u=alice",
+    properties: [
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop4",
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop5",
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop6",
+    ],
+  },
+  {
+    id: 3,
+    name: "Melissa William",
+    agency: "James Estate Agents",
+    verified: false,
+    avatar: "https://img.heroui.chat/image/avatar?w=150&h=150&u=melissa",
+    properties: [
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop7",
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop8",
+      "https://img.heroui.chat/image/furniture?w=400&h=300&u=prop9",
+    ],
+  },
+];
 
 function Example() {
   return (
-    <div className="min-h-screen bg-[#00A7E7]">
-      {/* Navigation */}
-      <nav className="flex justify-between items-center p-4">
-        <div className="w-12 h-12 bg-white/20 rounded-lg" />
-        <div className="flex items-center gap-2 text-white">
-          <Icon icon="lucide:share" className="w-5 h-5" />
-          <span>(2/4)</span>
-        </div>
-      </nav>
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-2xl font-bold">Meet Our Agents</h2>
+        <Button color="primary" variant="light" size="sm">
+          View All
+        </Button>
+      </div>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 pt-16">
-        <div className="max-w-2xl">
-          <h1 className="text-5xl font-bold text-white leading-tight mb-6">
-            Finding a perfect property have never been this easy earlier
-          </h1>
-          <p className="text-white/90 text-xl mb-8">
-            You can find perfectly suited properties for your all needs with ease.
-          </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {agents.map((agent) => (
+          <Card key={agent.id} className="p-4">
+            <CardContent className="p-0">
+              <div className="flex items-center gap-4 mb-4">
+                <Avatar
+                  src={agent.avatar}
+                  className="w-12 h-12"
+                  alt={agent.name}
+                />
+                <div>
+                  <div className="flex items-center gap-1">
+                    <h3 className="text-lg font-semibold">{agent.name}</h3>
+                    {agent.verified && (
+                      <Icon
+                        icon="lucide:badge-check"
+                        className="text-primary h-4 w-4"
+                      />
+                    )}
+                  </div>
+                  <p className="text-sm text-default-500">{agent.agency}</p>
+                </div>
+              </div>
 
-          <Button 
-            className="bg-white text-[#00A7E7] font-semibold px-8 py-6 rounded-full text-lg"
-            variant="solid"
-          >
-            Check Properties
-          </Button>
+              <div className="grid grid-cols-3 gap-2">
+                {agent.properties.map((property, index) => (
+                  <img
+                    key={index}
+                    src={property}
+                    alt={`Property ${index + 1}`}
+                    className="w-full h-24 object-cover rounded-lg"
+                  />
+                ))}
+              </div>
 
-          {/* Contact Information */}
-          <div className="mt-20 space-y-8">
-            <div>
-              <p className="text-white/70 mb-2">Email</p>
-              <p className="text-white text-2xl">hello@yoursite.com</p>
-            </div>
-            <div>
-              <p className="text-white/70 mb-2">Phone Number</p>
-              <p className="text-white text-2xl">+1 800 555 4321</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Decorative Image */}
-        <div className="absolute right-0 bottom-0 w-1/3 h-auto">
-          <img 
-            src="https://img.heroui.chat/image/places?w=800&h=600&u=1"
-            alt="Property" 
-            className="object-cover w-full h-full"
-          />
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute right-[20%] top-1/2 transform -translate-y-1/2">
-          <div className="w-32 h-32 bg-white/10 rounded-full blur-xl" />
-        </div>
-      </main>
+              <div className="flex justify-between mt-4">
+                <Button color="primary" variant="light" size="sm">
+                  View Profile
+                </Button>
+                <Button color="primary" variant="ghost" size="sm">
+                  {agent.properties.length} Listed Properties »
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }

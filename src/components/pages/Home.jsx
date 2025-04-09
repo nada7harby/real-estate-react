@@ -4,6 +4,7 @@ import OurSwiper from "../common/Swiper";
 import ALLProprerties from "../common/ALLProprerties";
 import CustomPaging from "../common/ImagesSlider";
 import Testimonials from "../common/Testimonials";
+import Banner from "../common/Banner";
 import Example from "../common/Test";
 
 export default function Home() {
@@ -11,13 +12,19 @@ export default function Home() {
     <>
       <Hero></Hero>
       <div className="py-60  lg:px-30 lg:py-40">
-        <h1 className="px-10  lg:px-0 lg:py-0 text-3xl  font-semibold">Discover Latest Properties</h1>
-        <h3 className="px-10 lg:px-0 lg:py-0  text-2xl"> Newest Properties Around You</h3>
+        <h1 className="px-10  lg:px-0 lg:py-0 text-3xl  font-semibold">
+          Discover Latest Properties
+        </h1>
+        <h3 className="px-10 lg:px-0 lg:py-0  text-2xl">
+          {" "}
+          Newest Properties Around You
+        </h3>
         <OurSwiper></OurSwiper>
       </div>
-        <ALLProprerties/>
-        <Testimonials/>
-        <Example></Example>
+      <ALLProprerties />
+      <Testimonials />
+      <Banner></Banner>
+      <Example></Example>
     </>
   );
 }
