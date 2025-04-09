@@ -1,0 +1,28 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "role": "Themeforest User",
+      "avatar": "https://img.heroui.chat/image/avatar?w=200&h=200&u=1",
+      "quote": "This is genuinely the best theme I have ever bought in terms of super easy & clear instructions to follow.",
+      "description": "I have been a web designer for over 18 years now. The theme is fantastic, flexible and simply excellent to use. I cannot recommend enough!"
+    },
+    {
+      "id": 2,
+      "name": "Sarah Smith",
+      "role": "Web Developer",
+      "avatar": "https://img.heroui.chat/image/avatar?w=200&h=200&u=2",
+      "quote": "An amazing theme with outstanding support and documentation.",
+      "description": "The attention to detail and user experience is exceptional. Highly recommended for any web project!"
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "role": "UI Designer",
+      "avatar": "https://img.heroui.chat/image/avatar?w=200&h=200&u=3",
+      "quote": "Perfect balance of features and simplicity.",
+      "description": "As a UI designer, I appreciate the clean design and thoughtful component architecture. It's a joy to work with!"
+    }
+  ]
+}

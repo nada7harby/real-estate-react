@@ -3,12 +3,12 @@ import { Card, CardContent, Button, Chip } from "@mui/material";
 import { Icon } from "@iconify/react";
 import "../../styles/components/Property-viewer.css";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 
 export const PropertyViewer = ({ properties }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -28,8 +28,6 @@ export const PropertyViewer = ({ properties }) => {
     setActiveImageIndex(0);
   };
 
-
-
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
     setActiveImageIndex(0);
@@ -41,10 +39,11 @@ export const PropertyViewer = ({ properties }) => {
         <CardContent className="p-0 lg:flex  bg-blue-100  ">
           <div className="relative ">
             <img
-              src={currentProperty.images[activeImageIndex]}
+              src={`/images/${currentProperty.images[activeImageIndex]}`}
               alt={currentProperty.title}
               className="w-full h-[400px] object-cover"
             />
+            {console.log(currentProperty.images[activeImageIndex])}
             {/* <Button
               variant="contained"
               sx={{ 
@@ -83,7 +82,7 @@ export const PropertyViewer = ({ properties }) => {
             >
               <Icon icon="lucide:chevron-right" className="text-xl" />
             </Button> */}
-            <div className="lg:absolute lg:-bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
               {currentProperty.images.map((_, idx) => (
                 <div
                   key={idx}
@@ -125,7 +124,7 @@ export const PropertyViewer = ({ properties }) => {
               </div>
             </div>
 
-            <div className="flex gap-7 mb-6 absolute  mt-2 -left-15  ">
+            <div className="flex gap-7 mb-6 lg:absolute  mt-2 -left-15  ">
               <div className="flex items-center gap-2 bg-white rounded-md p-3">
                 <Icon icon="lucide:bed" className="text-default-500" />
                 <span>{currentProperty.beds}</span>
@@ -163,50 +162,51 @@ export const PropertyViewer = ({ properties }) => {
           </div>
         </CardContent>
       </Card>
-  
-      <div className="flex gap-10 lg:gap-10 overflow-x-auto pb-4 w-lg">
-    <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
-            }}>
-        {properties.map((property, index) => (
-                <SwiperSlide>
-          <button
-            key={property.id}
-            onClick={() => handleThumbnailClick(index)}
-            className={`relative flex-shrink-0 cursor-pointer transition-all ${
-              currentIndex === index ? "ring-2 ring-primary-500" : ""
-            }`}
-          >
-            <img
-              src={property.images[0]}
-              alt={property.title}
-              className="w-32 h-24 object-cover rounded-lg"
-            />
-            <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm font-medium">
-                {property.title.split(" ")[0]}
-              </span>
-            </div>
-          </button>
-          </SwiperSlide>
-        ))}
-         </Swiper>
+
+      <div className="flex gap-10 lg:gap-10 overflow-x-auto pb-4 lg:w-lg">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+        >
+          {properties.map((property, index) => (
+            <SwiperSlide>
+              <button
+                key={property.id}
+                onClick={() => handleThumbnailClick(index)}
+                className={`relative flex-shrink-0 cursor-pointer transition-all ${
+                  currentIndex === index ? "ring-2 ring-primary-500" : ""
+                }`}
+              >
+                <img
+                  src={`/images/${property.images[0]}`}
+                  alt={property.title}
+                  className="w-32 h-24 object-cover rounded-lg"
+                />
+                <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-sm font-medium">
+                    {property.title.split(" ")[0]}
+                  </span>
+                </div>
+              </button>
+            </SwiperSlide>
+          ))}
+        </Swiper>
         <div className="flex items-center justify-center bg-default-100 rounded-lg px-4">
           <div className="text-center">
             <span className="text-default-600 font-medium">

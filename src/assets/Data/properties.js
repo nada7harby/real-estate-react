@@ -10,11 +10,9 @@ export const properties = [
     buildYear: 2018,
     description:
       "The very best waterfront location in Harbor Islands complete with private dock and amazing water views.",
-    images: [
-      "https://picsum.photos/id/164/800/600",
-      "https://picsum.photos/id/165/800/600",
-      "https://picsum.photos/id/166/800/600",
-    ],
+    images: ["blog-post-1.jpg"],
+    added: null,
+    status: "For Sale",
   },
   {
     id: 2,
@@ -27,11 +25,7 @@ export const properties = [
     buildYear: 2020,
     description:
       "Stunning modern villa with direct beach access and panoramic ocean views from every room.",
-    images: [
-      "https://picsum.photos/id/167/800/600",
-      "https://picsum.photos/id/168/800/600",
-      "https://picsum.photos/id/169/800/600",
-    ],
+    images: ["blog-post-2.jpg"],
   },
   {
     id: 3,
@@ -44,11 +38,7 @@ export const properties = [
     buildYear: 2019,
     description:
       "Spectacular penthouse with city and bay views, featuring premium finishes and a private rooftop terrace.",
-    images: [
-      "https://picsum.photos/id/170/800/600",
-      "https://picsum.photos/id/171/800/600",
-      "https://picsum.photos/id/172/800/600",
-    ],
+    images: ["blog-post-3.jpg"],
   },
   {
     id: 3,
@@ -61,11 +51,7 @@ export const properties = [
     buildYear: 2019,
     description:
       "Spectacular penthouse with city and bay views, featuring premium finishes and a private rooftop terrace.",
-    images: [
-      "https://picsum.photos/id/170/800/600",
-      "https://picsum.photos/id/171/800/600",
-      "https://picsum.photos/id/172/800/600",
-    ],
+    images: ["blog-post-4.jpg"],
   },
   {
     id: 3,
@@ -78,11 +64,7 @@ export const properties = [
     buildYear: 2019,
     description:
       "Spectacular penthouse with city and bay views, featuring premium finishes and a private rooftop terrace.",
-    images: [
-      "https://picsum.photos/id/170/800/600",
-
-      "https://picsum.photos/id/172/800/600",
-    ],
+    images: ["blog-post-5.jpg"],
   },
   {
     id: 3,
@@ -95,9 +77,32 @@ export const properties = [
     buildYear: 2019,
     description:
       "Spectacular penthouse with city and bay views, featuring premium finishes and a private rooftop terrace.",
-    images: [
-      "https://picsum.photos/id/171/800/600",
-      "https://picsum.photos/id/172/800/600",
-    ],
+    images: ["blog-post-6.jpg"],
   },
 ];
+
+
+
+
+// let agentsDetails=[
+//   {
+//     status : "Agent",
+//     name : "Melissa Williams",
+//     social_media : [
+//               { name: "Office", icon: <PhoneIcon />, socialContact: "1-222-333-4444" },
+//               { name: "Mobile", icon: <PhoneIcon />, socialContact: "1-234-456-7892" },
+//               { name: "Fax", icon: <FaxIcon />, socialContact: "1-333-444-5555" },
+//     ],
+//     img : img1
+//   },
+//   {
+//     status : "Agent",
+//     name : "John David",
+//     social_media : [
+//       { name: "Office", icon: <PhoneIcon />, socialContact: "1-222-333-4444" },
+//       { name: "Mobile", icon: <PhoneIcon />, socialContact: "1-234-456-7892" },
+//       { name: "Fax", icon: <FaxIcon />, socialContact: "1-333-444-5555" },
+//     ],
+//     img : img2
+//   }
+// ]

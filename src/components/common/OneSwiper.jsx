@@ -93,7 +93,7 @@ export default function OneSwiper({ property }) {
                 },
               }}
             >
-              <Icon icon="lucide:share-2" className="text-gray-700 text-6xl" />
+              <Icon icon="lucide:compare" className="text-gray-700 text-6xl" />
             </Button>
           </div>
         </div>

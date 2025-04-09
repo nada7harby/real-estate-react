@@ -3,6 +3,8 @@ import Hero from "../common/Hero";
 import OurSwiper from "../common/Swiper";
 import ALLProprerties from "../common/ALLProprerties";
 import CustomPaging from "../common/ImagesSlider";
+import Testimonials from "../common/Testimonials";
+import Example from "../common/Test";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
         <OurSwiper></OurSwiper>
       </div>
         <ALLProprerties/>
+        <Testimonials/>
+        <Example></Example>
     </>
   );
 }

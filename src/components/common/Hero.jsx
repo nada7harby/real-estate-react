@@ -96,7 +96,7 @@ export default function Hero() {
           </div>
 
           {/* Property Info Card */}
-          <div className="absolute lg:left-1/6 md:left-1/4  -bottom-20 bg-gray-200 rounded-lg p-4 shadow-lg lg:w-4xl">
+          <div className="absolute lg:left-1/6 sm:left-1/4  -bottom-20 bg-gray-200 rounded-lg p-4 shadow-lg lg:w-4xl">
             <div className="flex justify-between items-center">
               <div>
                 <div className="flex items-center gap-2 mb-2">

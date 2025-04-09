@@ -1,12 +1,21 @@
-# React + Vite
+# REAL-STATE-REACt_PROJECT
+This project is a real estate property listing application built with modern web technologies, designed to showcase properties with detailed information, media galleries, and interactive features.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Team Members:
+1. Nada Harby
+2. Mostafa Mamdoh
+3. Kerolos Sameh
+4. Manar Amer
+5. Amal Mostafa
 
-Currently, two official plugins are available:
+![Image](https://github.com/user-attachments/assets/3e74d2b3-e64f-4b0e-ab84-b27ef8f0754d)
+![Image](https://github.com/user-attachments/assets/58922f7f-123a-48c5-928e-e3f068fc8881)
+![Image](https://github.com/user-attachments/assets/62b13521-4dc3-43be-8fac-5561940560d9)
+![Image](https://github.com/user-attachments/assets/deae83de-6d3b-4310-9143-e76a1ca58a47)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📌 Features
+✔ Property Listings – Display detailed property information including price, location, and features.
+✔ Media Gallery – High-quality images, videos, and virtual tours.
+✔ Interactive Map – Google Maps integration to show property location.
+✔ Contact Forms – Allows users to inquire about properties.
+✔ Responsive Design – Works on desktop, tablet, and mobile.
