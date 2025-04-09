@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, Button, Chip } from "@mui/material";
 import { Icon } from "@iconify/react";
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
 export default function OneSwiper({ property }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  // Check if property is favorite when component mounts
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setIsFavorite(favorites.some(fav => fav.id === property.id));
+  }, [property.id]);
+
+  const toggleFavorite = () => {
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
+    
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    if (newFavoriteStatus) {
+      // Add to favorites if not already there
+      if (!favorites.some(fav => fav.id === property.id)) {
+        favorites.push(property);
+      }
+    } else {
+      // Remove from favorites
+      favorites = favorites.filter(fav => fav.id !== property.id);
+    }
+    
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  };
+
   return (
     <div className="p-4">
       <Card className="max-w-md">
@@ -63,6 +91,7 @@ export default function OneSwiper({ property }) {
           <div className="absolute bottom-3 right-3 flex gap-2">
             <Button
               variant="contained"
+              onClick={toggleFavorite}
               sx={{
                 minWidth: "50px",
                 width: "50px",
@@ -76,24 +105,33 @@ export default function OneSwiper({ property }) {
             >
               <Icon
                 icon="lucide:heart"
-                style={{ fontSize: "40px", color: "red" }}
+                style={{ 
+                  fontSize: "24px", 
+                  color: isFavorite ? "red" : "gray",
+                  fill: isFavorite ? "red" : "transparent"
+                }}
                 className="inline"
               />
             </Button>
             <Button
               variant="contained"
               sx={{
-                minWidth: "40px",
+                minWidth: "50px",
                 width: "50px",
                 height: "50px",
                 borderRadius: "50%",
                 backgroundColor: "white",
                 "&:hover": {
-                  backgroundColor: "rgba(255,255,255,0.9)",
+                  backgroundColor: "rgba(218, 218, 218, 0.9)",
                 },
               }}
             >
-              <Icon icon="lucide:compare" className="text-gray-700 text-6xl" />
+              <CompareArrowsIcon 
+                sx={{ 
+                  fontSize: "24px", 
+                  color: "#1976d2" 
+                }} 
+              />
             </Button>
           </div>
         </div>
