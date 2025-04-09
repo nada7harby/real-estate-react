@@ -22,46 +22,11 @@ import CheckIcon from '@mui/icons-material/Check';
 import ReactPlayer from 'react-player'
 import ScheduleTour from '../../components/common/ScheduleTour'
 import Comments from "./CommentsComponent";
-
-export default function overviewCmp() {
-  let overviews = [
-    {
-      name: "Bedrooms",
-      icon: <SingleBedIcon />,
-      number: 3,
-      sqft: false,
-    },
-    {
-      name: "Bathrooms",
-      icon: <BathroomIcon />,
-      number: 3,
-      sqft: false,
-    },
-    {
-      name: "Garage",
-      icon: <GarageIcon />,
-      number: 2,
-      sqft: false,
-    },
-    {
-      name: "Year Built",
-      icon: <DateRangeIcon />,
-      number: 2018,
-      sqft: false,
-    },
-    {
-      name: "Area",
-      icon: <AreaChartIcon />,
-      number: 4300,
-      sqft: true,
-    },
-    {
-      name: "Lot Size",
-      icon: <AspectRatioIcon />,
-      number: 5400,
-      sqft: true,
-    },
-  ];
+import Agent from "./Agent";
+import img1 from "../../../public/avatars/avatar_1.jpg"
+import img2 from "../../../public/avatars/avatar_2.jpg"
+import OverviewsComponent from "./OverviewsComponent";
+export default function overviewCmp({detailsOverviews}) {
   let agentInfo = [
     { name: "Office", icon: <PhoneIcon />, socialContact: "1-222-333-4444" },
     { name: "Mobile", icon: <PhoneIcon />, socialContact: "1-234-456-7892" },
@@ -97,88 +62,37 @@ export default function overviewCmp() {
     },
   ];
   let features = [{name : "2 Stories"} , {name : "Home Theater"} , {name : "Lawn"} , {name : "Marble Floors"}];
+  let agentsDetails=[
+        {
+          status : "Agent",
+          name : "Melissa Williams",
+          social_media : [
+                    { name: "Office", icon: <PhoneIcon />, socialContact: "1-222-333-4444" },
+                    { name: "Mobile", icon: <PhoneIcon />, socialContact: "1-234-456-7892" },
+                    { name: "Fax", icon: <FaxIcon />, socialContact: "1-333-444-5555" },
+          ],
+          img : img1
+        },
+        {
+          status : "Agent",
+          name : "John David",
+          social_media : [
+            { name: "Office", icon: <PhoneIcon />, socialContact: "1-222-333-4444" },
+            { name: "Mobile", icon: <PhoneIcon />, socialContact: "1-234-456-7892" },
+            { name: "Fax", icon: <FaxIcon />, socialContact: "1-333-444-5555" },
+          ],
+          img : img2
+        }
+      ]
   return (
     <>
       <Container maxWidth="xl">
         <div className="flex align-center">
           <div className="w-2/3">
-            <div
-              className="overview flex gap-4 py-2 "
-              style={{ alignItems: "anchor-center" }}
-            >
-              <p className="font-bold text-xl">Overview</p>
-              <Divider
-                className=""
-                sx={{ borderColor: "#9e9e9e" }}
-                orientation="vertical"
-                variant="middle"
-                flexItem
-              />
-              <p className="font-bold  text-lg text-gray-400">
-                Property ID : RH-2015-06
-              </p>
-              <Chip
-                label="Featured"
-                component="a"
-                href="#basic-chip"
-                size="small"
-                clickable
-                sx={{
-                  backgroundColor: "#1db2ff !important",
-                  color: "white",
-                }}
-              />
-            </div>
-            <Stack direction="row" spacing={2} className="my-5">
-              {overviews.map((i) => {
-                return (
-                  <Box key={i.number} className="overview__box">
-                    <Typography variant="subtitle2" className="title">
-                      {i.name}
-                    </Typography>
-                    <Stack
-                      direction="row"
-                      spacing={1}
-                      useFlexGap
-                      sx={{
-                        alignItems: "baseline",
-                        display: "flex",
-                      }}
-                    >
-                      <Typography
-                        style={{
-                          color: "var(--global-color-primary)",
-                          width: "24px",
-                          height: "24px",
-                        }}
-                        variant="h5"
-                      >
-                        {i.icon}
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        fontWeight="bold"
-                        sx={{
-                          fontSize: "15px",
-                          color: "var(--global-color-headings)",
-                          fontWeight: "500",
-                        }}
-                      >
-                        {i.number}
-                        {i.sqft && (
-                          <span
-                            style={{ color: "var(--global-color-text)" }}
-                            className="pl-2"
-                          >
-                            sq ft
-                          </span>
-                        )}
-                      </Typography>
-                    </Stack>
-                  </Box>
-                );
-              })}
-            </Stack>
+          <OverviewsComponent
+          details ={detailsOverviews}
+          />
+           
             <div className="content__wrapper">
               <div className="text-xl font-bold mt-10 mb-5">Description</div>
               <p className="text-lg">
@@ -268,64 +182,9 @@ export default function overviewCmp() {
             <Comments/>
           </div>
           <div className="w-1/3">
-            <Stack direction="row" spacing={2} sx={{ marginBottom: "20px" }}>
-              <Avatar
-                src="../../../public/avatars/avatar_1.jpg"
-                sx={{ width: 120, height: 120 }}
-              />
-              <Stack direction="column" spacing={2}>
-                <Typography
-                  className="title"
-                  variant="subtitle2"
-                  style={{ fontWeight: "bold" }}
-                >
-                  Agent
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{ marginTop: "0px !important", fontWeight: "bold" }}
-                >
-                  Melissa William
-                </Typography>
-                <Typography
-                  variant="body1"
-                  component="a"
-                  sx={{
-                    color: "var(--global-color-primary)",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    "&:hover": {
-                      color: "var(--global-color-headings)",
-                    },
-                  }}
-                >
-                  View My Listings
-                </Typography>
-              </Stack>
-            </Stack>
-            <Box>
-              {agentInfo.map((info) => {
-                return (
-                  <Stack
-                    direction="row"
-                    spacing={5}
-                    className="contact__office"
-                  >
-                    <Typography>{info.name}</Typography>
-                    <Stack direction="row" spacing={4}>
-                      <span
-                        style={{
-                          color: "var(--global-color-primary)",
-                        }}
-                      >
-                        {info.icon}
-                      </span>
-                      <a href="#">{info.socialContact}</a>
-                    </Stack>
-                  </Stack>
-                );
-              })}
-            </Box>
+            <Agent
+            agentsDetails={agentsDetails}
+            />
           </div>
         </div>
       </Container>
