@@ -7,6 +7,7 @@ import img3 from "../../assets/images/img-3.jpg";
 import img4 from "../../assets/images/img-4.jpg";
 import img5 from "../../assets/images/img-5.jpg";
 import img6 from "../../assets/images/img-6.jpg";
+
 export default function PropertySingle() {
   let propertyDetails = {
     id: "RH-2015-06",
@@ -34,16 +35,16 @@ export default function PropertySingle() {
     description : `
     Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana, in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal dining room. Remodeled kitchen with granite countertops, white cabinetry and stainless appliances. Lovely master bedroom has updated bath, beautiful view of the pool. Guest bedrooms have walk-in, cedar closets. Delightful backyard; majestic oaks surround the free form pool and expansive patio, wet bar and grill.
     `,
-    additionalDetails : {
-        bedroomFeatures : "Main Floor Master Bedroom, Walk-In Closet",
-        diningArea : "Breakfast Counter/Bar, Living/Dining Combo",
-        doorsWindows : "Bay Window",
-        EntryLocation : "Mid Level",
-        exteriorConstruction : "Wood",
-        fireplaceFuel : "Pellet Stove",
-        fireplaceLocation : "living Room",
-        floors : "Raised Foundation, Vinyl Tile, Wall-to-Wall Carpet, Wood"
-    },
+    additionalDetails : [
+        {name : "BEDROOM FEATURES:",desc :  "Main Floor Master Bedroom, Walk-In Closet"},
+         {name : "DINING AREA:", desc : "Breakfast Counter/Bar, Living/Dining Combo"},
+        {name : "DOORS & WINDOWS:", desc : "Bay Window"},
+        {name : "ENTRY LOCATION:", desc : "Mid Level"},
+        {name : "EXTERIOR CONSTRUCTION:",desc :  "Wood"},
+        {name : "FIREPLACE FUEL:", desc : "Pellet Stove"},
+        {name : "FIREPLACE LOCATION:", desc : "living Room"},
+        {name : "FLOORS:", desc : "Raised Foundation, Vinyl Tile, Wall-to-Wall Carpet, Wood"}
+    ],
     propertiesCommonNotes : "This is a common note that can be displayed on all properties but controlled from one simple option.",
     features : {
         stories : 2 ,
@@ -51,7 +52,7 @@ export default function PropertySingle() {
         Lawn : true ,
         marbleFloors : true ,
     },
-    video : "",
+    video : {img1},
 
   }
   return (
@@ -63,6 +64,7 @@ export default function PropertySingle() {
         <OverviewCmp
         detailsOverviews={propertyDetails}
         />
+        {/* <CustomForm/> */}
     </div>
   )
 }

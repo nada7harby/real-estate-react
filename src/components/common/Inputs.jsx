@@ -9,24 +9,36 @@ import { Stack } from "@mui/material";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Button from "@mui/material/Button";
-export default function InputAdornments() {
-  let contactFields = [
+import { Controller } from "react-hook-form";
+
+export default function InputAdornments({ control }) {
+  const contactFields = [
     {
-      labelName: "Name",
+      labelName: "name",
       icon: <AccountCircleIcon />,
       placeholder: "Enter Your Name",
+      rules: { required: "Name is required" }
     },
     {
-      labelName: "Phone",
+      labelName: "phone",
       icon: <LocalPhoneIcon />,
       placeholder: "Enter Your Phone",
+      rules: { required: "Phone is required" }
     },
     {
-      labelName: "Email",
+      labelName: "email",
       icon: <EmailIcon />,
       placeholder: "Enter Your Email",
+      rules: { 
+        required: "Email is required",
+        pattern: {
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          message: "Invalid email address"
+        }
+      }
     },
   ];
+
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap" }}>
       <div>
@@ -36,27 +48,33 @@ export default function InputAdornments() {
             spacing={2}
             sx={{ paddingTop: "20px", paddingBottom: "20px" }}
           >
-            {contactFields.map((field) => {
-              return (
-                <TextField
-                  fullWidth
-                  label={field.labelName}
-                  size="medium"
-                  id="outlined-start-adornment"
-                  rows={100}
-                  placeholder={field.placeholder}
-                  slotProps={{
-                    input: {
+            {contactFields.map((field) => (
+              <Controller
+                key={field.labelName}
+                name={field.labelName}
+                control={control}
+                rules={field.rules}
+                render={({ field: { onChange, value }, fieldState: { error } }) => (
+                  <TextField
+                    fullWidth
+                    label={field.labelName.charAt(0).toUpperCase() + field.labelName.slice(1)}
+                    value={value || ''}
+                    onChange={onChange}
+                    size="medium"
+                    error={!!error}
+                    helperText={error?.message}
+                    placeholder={field.placeholder}
+                    InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
                           {field.icon}
                         </InputAdornment>
                       ),
-                    },
-                  }}
-                />
-              );
-            })}
+                    }}
+                  />
+                )}
+              />
+            ))}
           </Stack>
           <Box sx={{ position: "relative", width: "100%" }}>
             <EmailIcon
@@ -68,22 +86,39 @@ export default function InputAdornments() {
                 pointerEvents: "none",
               }}
             />
-            <TextareaAutosize
-              aria-label="minimum height"
-              minRows={4}
-              placeholder="Type your message..."
-              style={{
-                width: "100%",
-                padding: "10px 10px 10px 40px",
-                borderRadius: "30px",
-                border: "1px solid #ccc",
-                fontSize: "14px",
-                fontFamily: "inherit",
-                resize: "vertical",
-                boxSizing: "border-box",
-              }}
+            <Controller
+              name="message"
+              control={control}
+              rules={{ required: "Message is required" }}
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <>
+                  <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={4}
+                    value={value || ''}
+                    onChange={onChange}
+                    placeholder="Type your message..."
+                    style={{
+                      width: "100%",
+                      padding: "10px 10px 10px 40px",
+                      borderRadius: "30px",
+                      border: error ? "1px solid red" : "1px solid #ccc",
+                      fontSize: "14px",
+                      fontFamily: "inherit",
+                      resize: "vertical",
+                      boxSizing: "border-box",
+                    }}
+                  />
+                  {error && (
+                    <p style={{ color: "red", fontSize: "0.75rem", marginLeft: "14px" }}>
+                      {error.message}
+                    </p>
+                  )}
+                </>
+              )}
             />
             <Button
+              type="submit"
               variant="contained"
               sx={{
                 borderRadius: "30px",
