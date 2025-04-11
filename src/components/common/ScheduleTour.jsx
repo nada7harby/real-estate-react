@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import img1 from '../../assets/images/img-1.jpg';
 import '../../styles/components/schedule_tour.css';
 import { useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 export default function ScheduleTour() {
   const { control, handleSubmit, setValue } = useForm({
@@ -35,7 +36,6 @@ export default function ScheduleTour() {
 
   const onSubmit = (data) => {
     console.log('Form submitted:', data);
-    // هنا يمكنك إرسال البيانات إلى الخادم
   };
 
   return (
@@ -47,20 +47,50 @@ export default function ScheduleTour() {
         <div className="w-3/4">
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Grid container spacing={2} columns={10}>
-                <Grid item xs={5}>
-                  <DatePickerValue
-                    value={control._formValues.date}
-                    onChange={handleDateChange}
-                  />
-                </Grid>
-                <Grid item xs={5}>
-                  <TimePickerValue
-                    value={control._formValues.time}
-                    onChange={handleTimeChange}
-                  />
-                </Grid>
-              </Grid>
+            <Grid container spacing={2} columns={10}>
+  <Grid item xs={5}>
+      <Controller
+        name="date"
+        control={control}
+        rules={{ required: 'Date is required' }}
+        render={({ field, fieldState }) => (
+          <>
+            <DatePickerValue
+              value={field.value}
+              onChange={(newDate) => {
+                field.onChange(newDate);
+                handleDateChange(newDate);
+              }}
+            />
+            {fieldState.error && (
+              <p className="text-red-500 text-sm mt-1">{fieldState.error.message}</p>
+            )}
+          </>
+        )}
+      />
+    </Grid>
+  <Grid item xs={5}>
+    <Controller
+      name="time"
+      control={control}
+      rules={{ required: 'Time is required' }}
+      render={({ field, fieldState }) => (
+        <>
+          <TimePickerValue
+            value={field.value}
+            onChange={(newTime) => {
+              field.onChange(newTime);
+              handleTimeChange(newTime);
+            }}
+          />
+          {fieldState.error && (
+            <p className="text-red-500 text-sm mt-1">{fieldState.error.message}</p>
+          )}
+        </>
+      )}
+    />
+  </Grid>
+</Grid>
               <Inputs control={control} />
             </form>
           </LocalizationProvider>

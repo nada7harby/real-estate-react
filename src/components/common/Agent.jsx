@@ -95,7 +95,7 @@ export default function Agent({agentsDetails}) {
                 );
               })}
             </Box>
-            <div className="ultra-form mx-5">
+            {/* <div className="ultra-form mx-5">
                 <p className="field-wrapper">
                     <label htmlFor="rh-enquiry-name">
                         <AccountCircleIcon/>
@@ -142,7 +142,7 @@ export default function Agent({agentsDetails}) {
                             >
                               send Message
                 </Button>
-            </div>
+            </div> */}
             </div>
                 )
               })

@@ -63,29 +63,7 @@ function CustomPaging(props) {
  console.log(props);
   const sliderRef = useRef(null);
   const settings = {
-    // appendDots: dots => (
-    //     <div className={imagesSliderStyles['custom-dots-container']}>
-    //     {images.map((img, idx) => (
-    //       <div key={idx} className="custom-dot flex-1 " style={{margin : "10px" , width : "100px" , height : "100px" , borderRadius : "5px" , cursor : "pointer"}}>
-    //         <img
-    //           style={{ width: '100%', height: '100%', objectFit: 'cover' , borderRadius : "5px"}}
-    //           src={img}
-    //           alt={`Image ${idx}`}
-    //         />
 
-    //       </div>
-    //     ))}
-    //   </div>
-    //   ),
-
-    // customPaging: function (i) {
-    //   console.log(i)
-    //   return (
-    //     <div className="custom-dot">
-    //       <img src={images[i]} alt={`Image ${i}`} />
-    //     </div>
-    //   );
-    // },
     dotsClass: `slick-dots slick-thumb ${imagesSliderStyles["slick-dots"]}`,
     infinite: true,
     speed: 500,
@@ -236,7 +214,7 @@ function CustomPaging(props) {
                         </Typography>
                       </Stack>
                       <Stack direction="row" spacing={1}>
-                        <Tooltip
+                        {/* <Tooltip
                           title="Share"
                           placement="top"
                           sx={{
@@ -265,7 +243,7 @@ function CustomPaging(props) {
                           <IconButton>
                             <PrintIcon />
                           </IconButton>
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip
                           title="Favourites"
                           placement="top"
