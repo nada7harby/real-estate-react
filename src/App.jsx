@@ -1,16 +1,34 @@
-
 import './App.css'
-import ImagesSlider from './components/common/ImagesSlider.jsx'
-import OverviewCmp from './components/common/overviewCmp.jsx'
-import Home from './components/pages/Home.jsx'
-import PropertySingle from './components/pages/PropertySingle.jsx'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ComparePage from './components/pages/ComparePage';
+import PropertiesGridPage from './components/pages/PropertiesGridPage';
+import { FavoriteProvider } from './components/common/FavoriteContext'; 
+
+const theme = createTheme({
+  components: {
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          color: '#1cb3ff', 
+        },
+      },
+    },
+  },
+});
+
 function App() {
   return (
-    <>
- 
-  {/* <Home/> */}
-  <PropertySingle/>
-    </>
+    <ThemeProvider theme={theme}>
+      <FavoriteProvider> 
+        <Router>
+          <Routes>
+            <Route path="/" element={<PropertiesGridPage />} />
+            <Route path="/compared" element={<ComparePage />} />
+          </Routes>
+        </Router>
+      </FavoriteProvider>
+    </ThemeProvider>
   );
 }
 
