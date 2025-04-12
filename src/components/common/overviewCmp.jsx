@@ -27,6 +27,7 @@ import img1 from "../../../public/avatars/avatar_1.jpg"
 import img2 from "../../../public/avatars/avatar_2.jpg"
 import OverviewsComponent from "./OverviewsComponent";
 export default function overviewCmp({detailsOverviews}) {
+  console.log(detailsOverviews.additionalDetails);
   let agentInfo = [
     { name: "Office", icon: <PhoneIcon />, socialContact: "1-222-333-4444" },
     { name: "Mobile", icon: <PhoneIcon />, socialContact: "1-234-456-7892" },
@@ -106,7 +107,7 @@ export default function overviewCmp({detailsOverviews}) {
               </div>
               <table className="min-w-full text-sm text-left mb-10">
                 <tbody>
-                  {additionalDetails.map((detail) => (
+                  {detailsOverviews.additionalDetails.map((detail) => (
                     <tr className="odd:bg-white even:bg-gray-200">
                       <td className="px-4 py-2 text-base font-medium">
                         {detail.name}
@@ -125,7 +126,7 @@ export default function overviewCmp({detailsOverviews}) {
                  Properties Common Note
             </div>
             <p>
-            This is a common note that can be displayed on all properties but controlled from one simple option.
+              {detailsOverviews.properitesCommonNotes}
             </p>
             </div>
             {/* property features */}
@@ -160,7 +161,7 @@ export default function overviewCmp({detailsOverviews}) {
             </div>
             <div className="aspect-video w-full">
   <ReactPlayer 
-    url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    url={detailsOverviews.video}
     width="100%" 
     height="100%"
     controls

@@ -3,3 +3,14 @@
     --color-mint-500: oklch(0.72 0.11 178);
     --color-gray-400 : #808080;
 }
+@import "tailwindcss";
+.compare-panel-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* تأكد من أن البانل يظهر فوق العناصر الأخرى */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* يمكنك تعديل الظل حسب الرغبة */
+  }
+  
