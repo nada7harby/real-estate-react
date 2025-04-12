@@ -26,7 +26,7 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
-    <FavoriteProvid>
+    <FavoriteProvider>
     <Router>
       <div className="min-h-screen flex flex-col">
         <NavBar />
@@ -43,7 +43,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-    </FavoriteProvid>
+    </FavoriteProvider>
     </ThemeProvider>
 
   );
