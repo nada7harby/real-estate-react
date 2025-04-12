@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Facebook, Twitter, Instagram, YouTube, Phone, Person, Menu, Close, Favorite } from "@mui/icons-material";
 import logo from "../../assets/images/ultra-header-logo.png";
-import AuthForm from "../pages/AuthForm";
+// import AuthForm from "../pages/AuthForm";
 import { useNavigate, Link } from "react-router-dom";
 import PersonIconWithPopover from "./PersonIconWithPopover";
 
@@ -68,7 +68,8 @@ const NavBar = () => {
 
                 {/* Menu Links */}
                 <ul className="flex space-x-6 text-gray-700 font-medium">
-                    <li><Link to="/" className="bg-blue-100 text-blue-500 px-4 py-2 rounded-md">Home</Link></li>
+                    <li><Link to="/" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Home</Link></li>
+                    <li><Link to="/dashboard" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Dashboard</Link></li>
                     <li><Link to="/real-estate" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Real Estate</Link></li>
                     <li><Link to="/property-single" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Property Single</Link></li>
                     <li><Link to="/contact" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Contact</Link></li>
@@ -105,6 +106,7 @@ const NavBar = () => {
                     </div>
                     <ul className="space-y-4 px-6 text-lg">
                         <li><Link to="/" className="block py-2">Home</Link></li>
+                        <li><Link to="/dashboard" className="block py-2">Dashboard</Link></li>
                         <li><Link to="/real-estate" className="block py-2">Real Estate</Link></li>
                         <li><Link to="/property-single" className="block py-2">Property Single</Link></li>
                         <li><Link to="/blog" className="block py-2">Blog</Link></li>

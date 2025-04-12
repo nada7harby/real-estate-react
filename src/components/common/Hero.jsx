@@ -26,8 +26,8 @@ export default function Hero() {
     <div className=" bg-gray-50 ">
       {/* Header */}
       <div className=" mx-auto mb-8 lg:pl-30">
-        <div className="flex justify-between items-center mb-4 ">
-          <h1 className="text-4xl font-bold text-blue-400 ">
+        <div className="flex justify-between items-center mb-4 lg:flex-row flex-col ">
+          <h1 className="text-4xl font-bold text-blue-400  lg:text-left text-center">
             Find Your Sweet Home
           </h1>
           <div className="flex items-center gap-4 bg-blue-100 p-5 text-color-white rounded-l-lg">
@@ -44,7 +44,7 @@ export default function Hero() {
       </div>
 
       {/* Property Slider */}
-      <div className="relative w-full mx-auto">
+      <div className="relative w-full mx-auto min-h-screen">
         <div className="relative aspect-[2/1] w-full rounded-xl">
           <img
             src={images[currentIndex]}

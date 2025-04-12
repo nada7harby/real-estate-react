@@ -6,6 +6,7 @@ import CustomPaging from "../common/ImagesSlider";
 import Testimonials from "../common/Testimonials";
 import Banner from "../common/Banner";
 import Example from "../common/Test";
+import NavBar from "../layout/NavBar";
 
 export default function Home() {
   return (

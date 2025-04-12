@@ -1,0 +1,40 @@
+// public/data.json
+{
+  "properties": [
+    {
+      "id": 1,
+      "title": "Villa on Hollywood Boulevard",
+      "price": "$740,000",
+      "status": "For Sale",
+      "image": "/images/blog-post-1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Modern Apartment",
+      "price": "$1,200/month",
+      "status": "For Rent",
+      "image": "/images/blog-post-2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Luxury Penthouse",
+      "price": "$1,250,000",
+      "status": "For Sale",
+      "image": "/images/blog-post-3.jpg"
+    }
+  ],
+  "agents": [
+    {
+      "name": "Melissa Williams",
+      "sales": 24,
+      "revenue": "$2.4M",
+      "avatar": "/avatars/avatar_1.jpg"
+    },
+    {
+      "name": "John David",
+      "sales": 18,
+      "revenue": "$1.8M",
+      "avatar": "/avatars/avatar_2.jpg"
+    }
+  ]
+}
