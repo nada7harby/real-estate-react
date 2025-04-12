@@ -9,7 +9,9 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ComparePage from './components/pages/ComparePage';
 import PropertiesGridPage from './components/pages/PropertiesGridPage';
 import { FavoriteProvider } from './components/common/FavoriteContext'; 
+import { CompareProvider } from './components/common/CompareContext';
 import Footer from './components/layout/Footer'
+import PropertySingle from './components/pages/PropertySingle'
 
 function App() {
   const theme = createTheme({
@@ -26,6 +28,7 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
+    <CompareProvider>
     <FavoriteProvider>
     <Router>
       <div className="min-h-screen flex flex-col">
@@ -34,8 +37,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/PropertiesGridPage" element={<PropertiesGridPage />} />
+            <Route path="/properties" element={<PropertiesGridPage/>} />
             <Route path="/compared" element={<ComparePage />} />
+            <Route path="/propertysingle" element={<PropertySingle />} />
             {/* <Route path="/property-single" element={<PropertySingle />} />
             <Route path="/contact" element={<Contact />} /> */}
           </Routes>
@@ -44,8 +48,8 @@ function App() {
       </div>
     </Router>
     </FavoriteProvider>
+    </CompareProvider>
     </ThemeProvider>
-
   );
 }
 

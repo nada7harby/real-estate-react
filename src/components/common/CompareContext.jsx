@@ -24,6 +24,4 @@ const CompareProvider = ({ children }) => {
 
 const useCompare = () => useContext(CompareContext);
 
-export default CompareProvider;
-
-export { useCompare };
+export { CompareProvider, useCompare };
