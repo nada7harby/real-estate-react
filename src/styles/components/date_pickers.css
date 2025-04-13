@@ -11,8 +11,7 @@
 .MuiPickersPopper-root , .MuiPaper-root{
     border-radius: 30px !important;
 }
-/* .MuiButtonBase-root {
-    } */
+
 .MuiPickersCalendarHeader-root .MuiButtonBase-root{
     color: rgb(255, 255, 255) !important;    
 }
