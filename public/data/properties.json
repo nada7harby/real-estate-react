@@ -645,5 +645,62 @@
       },
       "video": "/images/blog-post-3.jpg"
     }
+  ],
+  "agents": [
+    {
+      "id": "AG-001",
+      "name": "John Smith",
+      "email": "john.smith@realestate.com",
+      "phone": "+1 (555) 123-4567",
+      "image": "/images/agent-1.jpg",
+      "position": "Senior Agent",
+      "properties": ["RH-2015-06", "RH-2016-07", "RH-2017-08"],
+      "rating": 4.8,
+      "reviews": 125
+    },
+    {
+      "id": "AG-002",
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@realestate.com",
+      "phone": "+1 (555) 234-5678",
+      "image": "/images/agent-2.jpg",
+      "position": "Luxury Property Specialist",
+      "properties": ["RH-2018-09", "RH-2019-10", "RH-2020-11"],
+      "rating": 4.9,
+      "reviews": 98
+    },
+    {
+      "id": "AG-003",
+      "name": "Michael Brown",
+      "email": "michael.brown@realestate.com",
+      "phone": "+1 (555) 345-6789",
+      "image": "/images/agent-3.jpg",
+      "position": "Commercial Property Expert",
+      "properties": ["RH-2021-12", "RH-2022-13", "RH-2023-14"],
+      "rating": 4.7,
+      "reviews": 87
+    },
+    {
+      "id": "AG-004",
+      "name": "Emily Davis",
+      "email": "emily.davis@realestate.com",
+      "phone": "+1 (555) 456-7890",
+      "image": "/images/agent-4.jpg",
+      "position": "Residential Specialist",
+      "properties": ["RH-2024-15", "RH-2025-16", "RH-2026-17"],
+      "rating": 4.9,
+      "reviews": 112
+    },
+    {
+      "id": "AG-005",
+      "name": "David Wilson",
+      "email": "david.wilson@realestate.com",
+      "phone": "+1 (555) 567-8901",
+      "image": "/images/agent-5.jpg",
+      "position": "Investment Property Advisor",
+      "properties": ["RH-2027-18", "RH-2028-19", "RH-2029-20"],
+      "rating": 4.8,
+      "reviews": 95
+    }
   ]
 } 
