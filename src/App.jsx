@@ -12,6 +12,12 @@ import { FavoriteProvider } from './components/common/FavoriteContext';
 import { CompareProvider } from './components/common/CompareContext';
 import Footer from './components/layout/Footer'
 import PropertySingle from './components/pages/PropertySingle'
+import "./App.css";
+import Compare from "./components/pages/Compare.jsx";
+
+
+import Home from "./components/pages/Home.jsx";
+import MyFavorites from "./components/pages/MyFavorites.jsx";
 
 function App() {
   const theme = createTheme({
@@ -27,6 +33,7 @@ function App() {
   });
   
   return (
+<<<<<<< Updated upstream
     <ThemeProvider theme={theme}>
     <CompareProvider>
     <FavoriteProvider>
@@ -50,6 +57,13 @@ function App() {
     </FavoriteProvider>
     </CompareProvider>
     </ThemeProvider>
+=======
+    <>
+      <Compare />
+      {/* <MyFavorites /> */}
+      {/* <Home></Home> */}
+    </>
+>>>>>>> Stashed changes
   );
 }
 
