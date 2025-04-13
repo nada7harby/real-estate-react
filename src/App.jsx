@@ -16,14 +16,19 @@ import PropertySingle from "./components/pages/PropertySingle";
 import ComparePage from "./components/pages/ComparePage";
 import PropertiesGridPage from "./components/pages/PropertiesGridPage";
 import Compare from "./components/pages/Compare.jsx";
+import Contact from "./components/pages/Contact.jsx";
 import MyFavorites from "./components/pages/MyFavorites.jsx";
 import AuthForm from "./components/pages/AuthForm.jsx";
 import CheckoutPage from "./components/pages/CheckoutPage.jsx";
-import NumberOfPayments from  "./components/pages/NumberOfPayments.jsx";
+import NumberOfPayments from "./components/pages/NumberOfPayments.jsx";
+import { Toaster } from "react-hot-toast";
+// import emailjs from "@emailjs/browser";
+
 
 // Providers
 import { FavoriteProvider } from "./components/common/FavoriteContext";
 import { CompareProvider } from "./components/common/CompareContext";
+import ClientTestimonials from "./components/pages/ClientTestimonials.jsx";
 
 const stripePromise = loadStripe(
   "pk_test_51RC3rdGavfGkHWZgLjk33Vfew5sg4nqKbBuoRt5gg2z4Unr7M3mrUpiRGNKkbA2wwdSwBCJJSw9IX1hLCwTXASXP00kwvlxaEH"
@@ -52,6 +57,7 @@ function App() {
             <div className="min-h-screen flex flex-col">
               <NavBar />
               <main className="flex-grow">
+                <Toaster position="top-center" reverseOrder={false} />
                 <Elements stripe={stripePromise}>
                   <Routes>
                     <Route path="/" element={<Home />} />
@@ -76,6 +82,9 @@ function App() {
                     <Route path="/favorites" element={<MyFavorites />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
                     <Route path="/payments" element={<NumberOfPayments />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/ClientTestimonials" element={<ClientTestimonials />} />
+                    
                   </Routes>
                 </Elements>
               </main>
