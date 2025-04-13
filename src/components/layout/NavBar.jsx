@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Facebook, Twitter, Instagram, YouTube, Phone, Person, Menu, Close, Favorite } from "@mui/icons-material";
 import logo from "../../assets/images/ultra-header-logo.png";
-// import AuthForm from "../pages/AuthForm";
+import AuthForm from "../pages/AuthForm";
 import { useNavigate, Link } from "react-router-dom";
 import PersonIconWithPopover from "./PersonIconWithPopover";
 
