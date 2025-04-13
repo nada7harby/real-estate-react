@@ -4,7 +4,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 
-// import MapFullWidth from "../common/MapFullWidth";
+import MapFullWidth from "../common/MapFullWidth";
 import ContactFormSection from "./ContactFormSection";
 
 import partner1 from "../../assets/images/Adobe-Homes.png";

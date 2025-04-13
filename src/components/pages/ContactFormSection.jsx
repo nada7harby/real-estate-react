@@ -9,27 +9,59 @@ import MessageIcon from "@mui/icons-material/Message";
 const ContactFormSection = () => {
   const form = useRef();
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-
+  
+    const name = form.current.name.value;
+    const email = form.current.email.value;
+    const message = form.current.message.value;
+    const imageFile = form.current.image.files[0];
+  
+    let imageBase64 = null;
+  
+    if (imageFile) {
+      imageBase64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(imageFile);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+    }
+  
+    const formData = {
+      name,
+      email,
+      message,
+      image: imageBase64, 
+    };
+  
+    const existingMessages = JSON.parse(localStorage.getItem("clientMessages")) || [];
+    localStorage.setItem("clientMessages", JSON.stringify([formData, ...existingMessages]));
+  
     emailjs
-      .sendForm("service_8qdxubt", "template_zkzftho", form.current, "e77TqKOn8eJjXoBS8")
-      .then(
-        () => {
-          toast.success("Message sent successfully!"); 
-          form.current.reset();
+      .send(
+        "service_8qdxubt",
+        "template_zkzftho",
+        {
+          name,
+          email,
+          message,
         },
-        (error) => {
-          console.error("Failed to send:", error);
-          toast.error("Something went wrong. Please try again."); 
-        }
-      );
+        "e77TqKOn8eJjXoBS8"
+      )
+      .then(() => {
+        toast.success("Message sent successfully!");
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.error("Failed to send:", error);
+        toast.error("Something went wrong. Please try again.");
+      });
   };
-
+  
   return (
     <div className="bg-blue-50 mt-32 px-4 py-10 md:px-16 rounded-3xl max-w-5xl mx-auto">
       <form ref={form} onSubmit={sendEmail}>
-        {/* Name & Phone */}
         <div className="flex flex-col md:flex-row gap-6 mb-6">
           <div className="flex-1">
             <label className="block text-gray-500 font-medium mb-1">Name</label>
@@ -59,7 +91,6 @@ const ContactFormSection = () => {
           </div>
         </div>
 
-        
         <div className="mb-6">
           <label className="block text-gray-500 font-medium mb-1">Email</label>
           <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm">
@@ -74,7 +105,6 @@ const ContactFormSection = () => {
           </div>
         </div>
 
-        
         <div className="mb-6">
           <label className="block text-gray-500 font-medium mb-1">Message</label>
           <div className="flex items-start bg-white rounded-2xl px-4 py-3 shadow-sm">
@@ -89,7 +119,18 @@ const ContactFormSection = () => {
           </div>
         </div>
 
-        
+        <div className="mb-6">
+          <label className="block text-gray-500 font-medium mb-1">Profile Image (optional)</label>
+          <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm">
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              className="text-sm text-gray-700 bg-transparent"
+            />
+          </div>
+        </div>
+
         <div className="mb-6 flex items-start">
           <input type="checkbox" className="mt-1 mr-2" required />
           <p className="text-sm text-gray-700">
@@ -97,18 +138,11 @@ const ContactFormSection = () => {
           </p>
         </div>
 
-        
         <button
           type="submit"
-          className="bg-blue-500 text-white font-medium px-6 py-2 rounded-full hover:bg-blue-600 transition"
-        >
-          Send Message
-        </button>
+          className="bg-blue-500 text-white font-medium px-6 py-2 rounded-full hover:bg-blue-600 transition"> Send Message </button>
       </form>
     </div>
   );
 };
-
 export default ContactFormSection;
-
-
