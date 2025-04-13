@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ImagesSlider from '../common/ImagesSlider.jsx'
 import OverviewCmp from '../common/overviewCmp.jsx'
-import { useParams } from 'react-router-dom'
 import img1 from "../../assets/images/img-1.jpg";
 import img2 from "../../assets/images/img-2.jpg";
 import img3 from "../../assets/images/img-3.jpg";
@@ -10,88 +9,62 @@ import img5 from "../../assets/images/img-5.jpg";
 import img6 from "../../assets/images/img-6.jpg";
 
 export default function PropertySingle() {
-  const [propertyDetails, setPropertyDetails] = useState(null);
-  const { id } = useParams();
+  let propertyDetails = {
+    id: "RH-2015-06",
+    title: "Home in Merrick Way",
+    price: "$540,000",
+    address: "Merrick Way, Miami, FL 33134, USA",
+    type: "Villa",
+    status: "For Sale",
+    yearBuilt: 2019,
+    images : [
+        img1,
+        img2,
+        img3,
+        img4,
+        img5,
+        img6
+    ],
+    overview : {
+        bathrooms : 3,
+        bedrooms : 3,
+        garage : 2,
+        area : 4300 ,
+        lotSize : 5400 
+    },
+    description : `
+    Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana, in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal dining room. Remodeled kitchen with granite countertops, white cabinetry and stainless appliances. Lovely master bedroom has updated bath, beautiful view of the pool. Guest bedrooms have walk-in, cedar closets. Delightful backyard; majestic oaks surround the free form pool and expansive patio, wet bar and grill.
+    `,
+    additionalDetails : [
+        {name : "BEDROOM FEATURES:",desc :  "Main Floor Master Bedroom, Walk-In Closet"},
+         {name : "DINING AREA:", desc : "Breakfast Counter/Bar, Living/Dining Combo"},
+        {name : "DOORS & WINDOWS:", desc : "Bay Window"},
+        {name : "ENTRY LOCATION:", desc : "Mid Level"},
+        {name : "EXTERIOR CONSTRUCTION:",desc :  "Wood"},
+        {name : "FIREPLACE FUEL:", desc : "Pellet Stove"},
+        {name : "FIREPLACE LOCATION:", desc : "living Room"},
+        {name : "FLOORS:", desc : "Raised Foundation, Vinyl Tile, Wall-to-Wall Carpet, Wood"}
+    ],
+    propertiesCommonNotes : "This is a common note that can be displayed on all properties but controlled from one simple option.",
+    features : {
+        stories : 2 ,
+        HomeTheater : true ,
+        Lawn : true ,
+        marbleFloors : true ,
+    },
+    video : {img1},
 
-  useEffect(() => {
-    fetch('/data/properties.json')
-      .then(response => response.json())
-      .then(data => {
-        const property = data.properties.find(p => p.id === id);
-        if (property) {
-          setPropertyDetails(property);
-        }
-      })
-      .catch(error => console.error('Error loading property:', error));
-  }, [id]);
-
-  if (!propertyDetails) {
-    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
   }
-
   return (
-    <div className='property-single max-w-7xl mx-auto px-4 py-8'>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">{propertyDetails.title}</h1>
-        <p className="text-gray-600">
-          <span className="text-sky-500 font-semibold">{propertyDetails.price}</span> • 
-          <span className="ml-2">{propertyDetails.address}</span>
-        </p>
-      </div>
-
-      <ImagesSlider details={propertyDetails} />
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-        <div className="md:col-span-2">
-          <OverviewCmp detailsOverviews={propertyDetails} />
-          
-          <div className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">Description</h2>
-            <p className="text-gray-600">{propertyDetails.description}</p>
-          </div>
-
-          <div className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">Additional Details</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {propertyDetails.additionalDetails.map((detail, index) => (
-                <div key={index} className="border-b pb-2">
-                  <h3 className="font-semibold text-gray-800">{detail.name}</h3>
-                  <p className="text-gray-600">{detail.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="md:col-span-1">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Features</h2>
-            <ul className="space-y-2">
-              <li className="flex items-center">
-                <span className="text-gray-600 w-32">Stories:</span>
-                <span className="font-semibold">{propertyDetails.features.stories}</span>
-              </li>
-              <li className="flex items-center">
-                <span className="text-gray-600 w-32">Home Theater:</span>
-                <span className="font-semibold">{propertyDetails.features.HomeTheater ? 'Yes' : 'No'}</span>
-              </li>
-              <li className="flex items-center">
-                <span className="text-gray-600 w-32">Lawn:</span>
-                <span className="font-semibold">{propertyDetails.features.Lawn ? 'Yes' : 'No'}</span>
-              </li>
-              <li className="flex items-center">
-                <span className="text-gray-600 w-32">Marble Floors:</span>
-                <span className="font-semibold">{propertyDetails.features.marbleFloors ? 'Yes' : 'No'}</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="mt-6 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Property Notes</h2>
-            <p className="text-gray-600">{propertyDetails.propertiesCommonNotes}</p>
-          </div>
-        </div>
-      </div>
+    <div className='property-single'>
+         <ImagesSlider
+             details={propertyDetails} 
+         />
+        
+        <OverviewCmp
+        detailsOverviews={propertyDetails}
+        />
+        {/* <CustomForm/> */}
     </div>
   )
 }
