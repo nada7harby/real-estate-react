@@ -36,7 +36,7 @@ export default function OneSwiper({ property }) {
       <Card className="max-w-md">
         <div className="relative">
           <img
-            src={property.image}
+            src={property.images[0]}
             alt="Villa interior"
             className="w-full h-64 object-cover rounded-t-xl"
           />
@@ -139,7 +139,7 @@ export default function OneSwiper({ property }) {
           <h2 className="text-xl font-semibold">{property.title}</h2>
           <div className="flex items-center gap-2 text-default-500">
             <Icon icon="lucide:map-pin" className="text-blue-500" />
-            <span>{property.location}</span>
+            <span>{property.address}</span>
           </div>
           <div className="text-sm">{property.type}</div>
           <div className="flex items-center justify-between">

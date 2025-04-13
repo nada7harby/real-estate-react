@@ -1,107 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropertyCard from "../common/PropertyCard";
 import MapFullWidth from "../common/MapFullWidth";
 import ComparePanel from "../common/ComparePanal";
 import SearchBar from "../common/SearchBar";
 
-const properties = [
-  {
-    image:
-      "https://ultra-realhomes.b-cdn.net/wp-content/uploads/2022/06/architecture-home-merrick-way-680x510.jpg",
-    title: "Home in Coral Gables",
-    address: "Jeronimo Drive, Coral Gables, FL 33146, USA",
-    type: "Single Family",
-    price: "850,000",
-    beds: 4,
-    baths: 4.5,
-    size: 3800,
-    added: null,
-    status: ["For Sale", "Featured"],
-  },
-  {
-    image:
-      "https://ultra-realhomes.b-cdn.net/wp-content/uploads/2020/06/property-2.jpg",
-    title: "Luxury Apartment",
-    address: "435 Southwest 12th Avenue, Miami, FL 33130, USA",
-    type: "Apartment",
-    price: "2,500",
-    beds: 2,
-    baths: 2,
-    size: 1650,
-    added: "June 7, 2022",
-    status: ["For Sale", "Featured", "Hot"],
-  },
-  {
-    image:
-      "https://ultra-realhomes.b-cdn.net/wp-content/uploads/2020/06/property-3-680x510.jpg",
-    title: "Building Having 15 Apartments",
-    address: "435 Southwest 12th Avenue, Miami, FL 33130, USA",
-    type: "Apartment Building",
-    price: "6,950,000",
-    beds: null,
-    baths: null,
-    size: 52000,
-    added: "June 6, 2022",
-    status: ["For rent", "Featured", "Trendy"],
-  },
-  {
-    image:
-      "https://ultra-realhomes.b-cdn.net/wp-content/uploads/2020/06/Modern-House-680x510.jpg",
-    title: "Traditional Food Restaurant",
-    address: "435 Southwest 12th Avenue, Miami, FL 33130, USA",
-    type: "Apartment Building",
-    price: "6,950,000",
-    beds: null,
-    baths: null,
-    size: 52000,
-    added: "June 6, 2022",
-    status: "For Sale",
-  },
-  {
-    image:
-      "https://ultra-realhomes.b-cdn.net/wp-content/uploads/2020/06/House-Design-680x510.jpg",
-    title: "Traditional Food Restaurant",
-    address: "435 Southwest 12th Avenue, Miami, FL 33130, USA",
-    type: "Apartment Building",
-    price: "6,950,000",
-    beds: null,
-    baths: null,
-    size: 52000,
-    added: "June 6, 2022",
-    status: "For Sale",
-  },
-  {
-    image:
-      "https://ultra-realhomes.b-cdn.net/wp-content/uploads/2022/06/meeting-working-room-office-building-680x510.jpg",
-    title: "Traditional Food Restaurant",
-    address: "435 Southwest 12th Avenue, Miami, FL 33130, USA",
-    type: "Apartment Building",
-    price: "6,950,000",
-    beds: null,
-    baths: null,
-    size: 52000,
-    added: "June 6, 2022",
-    status: "For Sale",
-  },
-  {
-    image:
-      "https://ultra-realhomes.b-cdn.net/wp-content/uploads/2020/06/property-3-680x510.jpg",
-    title: "Building Having 15 Apartments",
-    address: "435 Southwest 12th Avenue, Miami, FL 33130, USA",
-    type: "Apartment Building",
-    price: "6,950,000",
-    beds: null,
-    baths: null,
-    size: 52000,
-    added: "June 6, 2022",
-    status: "For Sale",
-  },
-];
-
 const PropertiesGridPage = () => {
-  const [filteredProperties, setFilteredProperties] = useState(properties);
+  const [properties, setProperties] = useState([]);
+  const [filteredProperties, setFilteredProperties] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 6;
+
+  useEffect(() => {
+    fetch('/data/properties.json')
+      .then(response => response.json())
+      .then(data => {
+        setProperties(data.properties);
+        setFilteredProperties(data.properties);
+      })
+      .catch(error => console.error('Error loading properties:', error));
+  }, []);
 
   const handleSearch = (filters) => {
     const results = properties.filter((property) => {
@@ -147,8 +64,8 @@ const PropertiesGridPage = () => {
       <MapFullWidth />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {currentProperties.map((prop, idx) => (
-          <PropertyCard key={idx} {...prop} />
+        {currentProperties.map((property) => (
+          <PropertyCard key={property.id} {...property} />
         ))}
       </div>
 

@@ -7,24 +7,32 @@ import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import CropSquareOutlinedIcon from '@mui/icons-material/CropSquareOutlined';
 import { useCompare } from "./CompareContext"; 
 import { useFavorite } from "./FavoriteContext";
+import { useNavigate } from 'react-router-dom';
 
 const PropertyCard = ({
-  image, title, address, type, price, beds, baths, size, added, status,
+  id, images, title, address, type, price, beds, baths, size, added, status,
 }) => {
   const { compareList, addToCompare } = useCompare();
   const { toggleFavorite, isFavorite } = useFavorite();
+  const navigate = useNavigate();
   const isFav = isFavorite(title); 
 
-  const handleFav = () => {
+  const handleFav = (e) => {
+    e.stopPropagation();
     toggleFavorite({
-      image,title,address,type,price,beds,baths,size,added,status,
+      id, images, title, address, type, price, beds, baths, size, added, status,
     });
   };
 
-  const handleCompareClick = () => {
+  const handleCompareClick = (e) => {
+    e.stopPropagation();
     addToCompare({
-      image, title, address, type, price, beds, baths, size, added, status,
+      id, images, title, address, type, price, beds, baths, size, added, status,
     });
+  };
+
+  const handleCardClick = () => {
+    navigate(`/property/${id}`);
   };
 
   const isSelected = compareList.some((item) => item.title === title);
@@ -45,9 +53,12 @@ const PropertyCard = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+    <div 
+      className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="relative">
-        <img src={image} alt={title} className="w-full h-56 object-cover" />
+        <img src={images[0]} alt={title} className="w-full h-56 object-cover" />
 
         <div className="absolute top-2 left-2 flex flex-wrap gap-1">
           {(Array.isArray(status) ? status : [status]).map((tag, i) => (
@@ -76,11 +87,9 @@ const PropertyCard = ({
       </div>
 
       <div className="p-4">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-          <h3 className="font-semibold text-lg text-gray-800 mb-1 hover:text-blue-600 transition-colors duration-300">
-            {title}
-          </h3>
-        </a>
+        <h3 className="font-semibold text-lg text-gray-800 mb-1 hover:text-blue-600 transition-colors duration-300">
+          {title}
+        </h3>
         <p className="text-sm text-gray-500 mb-1">
           <RoomOutlinedIcon />
           {address}

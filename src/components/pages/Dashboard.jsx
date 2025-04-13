@@ -58,13 +58,21 @@ export default function Dashboard() {
 
   // Load data from JSON file
   useEffect(() => {
-    fetch('./public/data/data.json')
-      .then(response => response.json())
+    fetch('/data/data.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => {
         setData(data);
         // Generate new ID for adding properties
         const maxId = Math.max(...data.properties.map(p => p.id), 0);
         setNewProperty(prev => ({ ...prev, id: maxId + 1 }));
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
       });
   }, []);
 

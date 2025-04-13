@@ -38,8 +38,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/properties" element={<PropertiesGridPage/>} />
+            <Route path="/property/:id" element={<PropertySingle />} />
             <Route path="/compared" element={<ComparePage />} />
-            <Route path="/propertysingle" element={<PropertySingle />} />
             {/* <Route path="/property-single" element={<PropertySingle />} />
             <Route path="/contact" element={<Contact />} /> */}
           </Routes>

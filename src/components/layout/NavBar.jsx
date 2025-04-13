@@ -10,8 +10,8 @@ const NavBar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showAuthForm, setShowAuthForm] = useState(false);
     const [mode, setMode] = useState("login");
-    const [showPopover, setShowPopover] = useState(false);
-    const navigate = useNavigate();
+    // const [showPopover, setShowPopover] = useState(false);
+    // const navigate = useNavigate();
 
     return (
         <nav className="bg-white shadow-md py-4 px-6">
@@ -70,8 +70,8 @@ const NavBar = () => {
                 <ul className="flex space-x-6 text-gray-700 font-medium">
                     <li><Link to="/" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Home</Link></li>
                     <li><Link to="/dashboard" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Dashboard</Link></li>
-                    <li><Link to="/real-estate" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Real Estate</Link></li>
-                    <li><Link to="/property-single" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Property Single</Link></li>
+                    <li><Link to="/properties" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Real Estate</Link></li>
+                    {/* <li><Link to="/property-single" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Property Single</Link></li> */}
                     <li><Link to="/contact" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Contact</Link></li>
                 </ul>
 
