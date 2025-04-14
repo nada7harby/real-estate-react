@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../styles/components/Swiper.css";
 import { Pagination } from "swiper/modules";
 import OneSwiper from "./OneSwiper";
+import { useProperties } from "./PropertiesContext";
 
 export default function OurSwiper() {
-  const [properties, setProperties] = useState([]);
-
-  useEffect(() => {
-    fetch('/data/properties.json')
-      .then(response => response.json())
-      .then(data => setProperties(data.properties))
-      .catch(error => console.error('Error loading properties:', error));
-  }, []);
+  const { properties } = useProperties();
 
   return (
     <>

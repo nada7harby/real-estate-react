@@ -24,7 +24,7 @@ const AuthForm = ({ mode, setMode, onClose }) => {
 
     if (!emailRegex.test(email)) {
       Swal.fire({
-        title: 'Invaild email format',
+        title: 'Invalid email format',
         confirmButtonColor: '#6EC1E4'
       });
       return;
@@ -44,50 +44,186 @@ const AuthForm = ({ mode, setMode, onClose }) => {
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
     if (isLogin) {
-      const user = users.find((u) => u.email === email && u.password === password);
+      // First check users.json
+      fetch('/data/users.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const jsonUsers = data.users;
+          const user = jsonUsers.find((u) => u.email === email && u.password === password);
 
-      if (!user) {
-        const emailExists = users.find((u) => u.email === email);
-        if (!emailExists) {
+          if (user) {
+            // Store user data in localStorage
+            localStorage.setItem('currentUser', JSON.stringify({
+              id: user.id,
+              username: user.username,
+              email: user.email,
+              role: user.role
+            }));
+
+            navigate("/");
+            onClose();
+            return;
+          }
+
+          // If not found in users.json, check localStorage
+          const localStorageUsers = JSON.parse(localStorage.getItem("users") || "[]");
+          const localStorageUser = localStorageUsers.find((u) => u.email === email && u.password === password);
+
+          if (localStorageUser) {
+            // Store user data in localStorage
+            localStorage.setItem('currentUser', JSON.stringify({
+              id: localStorageUser.id,
+              username: localStorageUser.username,
+              email: localStorageUser.email,
+              role: localStorageUser.role || 'user' // Default role for localStorage users
+            }));
+
+            navigate("/");
+            onClose();
+            return;
+          }
+
+          // If user not found in both places
+          const emailExists = [...jsonUsers, ...localStorageUsers].find((u) => u.email === email);
+          if (!emailExists) {
+            Swal.fire({
+              title: 'This email does not exist!',
+              confirmButtonColor: '#6EC1E4'
+            });
+          } else {
+            Swal.fire({
+              title: 'Incorrect password!',
+              confirmButtonColor: '#6EC1E4'
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Error loading users:', error);
+          // If there's an error loading users.json, check localStorage only
+          const localStorageUsers = JSON.parse(localStorage.getItem("users") || "[]");
+          const localStorageUser = localStorageUsers.find((u) => u.email === email && u.password === password);
+
+          if (localStorageUser) {
+            localStorage.setItem('currentUser', JSON.stringify({
+              id: localStorageUser.id,
+              username: localStorageUser.username,
+              email: localStorageUser.email,
+              role: localStorageUser.role || 'user'
+            }));
+
+            navigate("/");
+            onClose();
+            return;
+          }
+
           Swal.fire({
-            title: 'This email does not exist!',
+            title: 'Error loading users data!',
+            text: 'Please try again later.',
             confirmButtonColor: '#6EC1E4'
           });
-        } else {
-          Swal.fire({
-            title: 'Incorrect password!',
-            confirmButtonColor: '#6EC1E4'
-          });
-        }
-        return;
-      }
-      navigate("/home");
-      onClose();
-
-    } else {
-      const userExists = users.find((u) => u.email === email);
-
-      if (userExists) {
-        Swal.fire({
-          title: 'Email already registered!',
-          confirmButtonColor: '#6EC1E4'
         });
-        return;
-      }
+    } else {
+      // For signup, first check if email exists in users.json
+      fetch('/data/users.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const jsonUsers = data.users;
+          const localStorageUsers = JSON.parse(localStorage.getItem("users") || "[]");
+          
+          const emailExists = [...jsonUsers, ...localStorageUsers].find((u) => u.email === email);
 
-      users.push({ username, email, password });
-      localStorage.setItem("users", JSON.stringify(users));
-      Swal.fire({
-        title: 'Account created successfully!',
-        confirmButtonColor: '#6EC1E4'
-      }).then(() => {
-        setMode("login");
-        navigate("/login");
-      });
+          if (emailExists) {
+            Swal.fire({
+              title: 'Email already registered!',
+              confirmButtonColor: '#6EC1E4'
+            });
+            return;
+          }
+
+          // Add new user to localStorage
+          const newUser = {
+            id: Date.now(), // Generate unique ID
+            username,
+            email,
+            password,
+            role: 'user' // Default role for new users
+          };
+
+          localStorageUsers.push(newUser);
+          localStorage.setItem("users", JSON.stringify(localStorageUsers));
+
+          // Store current user data
+          localStorage.setItem('currentUser', JSON.stringify({
+            id: newUser.id,
+            username: newUser.username,
+            email: newUser.email,
+            role: newUser.role
+          }));
+
+          Swal.fire({
+            title: 'Account created successfully!',
+            confirmButtonColor: '#6EC1E4'
+          }).then(() => {
+            setMode("login");
+            navigate("/");
+          });
+        })
+        .catch(error => {
+          console.error('Error loading users:', error);
+          // If there's an error loading users.json, proceed with localStorage only
+          const localStorageUsers = JSON.parse(localStorage.getItem("users") || "[]");
+          const emailExists = localStorageUsers.find((u) => u.email === email);
+
+          if (emailExists) {
+            Swal.fire({
+              title: 'Email already registered!',
+              confirmButtonColor: '#6EC1E4'
+            });
+            return;
+          }
+
+          // Add new user to localStorage
+          const newUser = {
+            id: Date.now(),
+            username,
+            email,
+            password,
+            role: 'user'
+          };
+
+          localStorageUsers.push(newUser);
+          localStorage.setItem("users", JSON.stringify(localStorageUsers));
+
+          // Store current user data
+          localStorage.setItem('currentUser', JSON.stringify({
+            id: newUser.id,
+            username: newUser.username,
+            email: newUser.email,
+            role: newUser.role
+          }));
+
+          Swal.fire({
+            title: 'Account created successfully!',
+            confirmButtonColor: '#6EC1E4'
+          }).then(() => {
+            setMode("login");
+            navigate("/");
+          });
+        });
     }
   };
+
   const [currentDate, setCurrentDate] = useState("");
   const [currentDay, setCurrentDay] = useState("");
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -29,6 +29,7 @@ import {
   Checkbox,
   FormControlLabel,
   FormGroup,
+  FormHelperText,
 } from "@mui/material";
 import {
   Home,
@@ -51,16 +52,18 @@ import {
   Star,
 } from "@mui/icons-material";
 import Swal from "sweetalert2";
-import { Elements } from '@stripe/react-stripe-js';
+import { useProperties } from "../common/PropertiesContext";
 
 export default function Dashboard() {
-  const [properties, setProperties] = useState([]);
-  const [agents, setAgents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {
+    properties,
+    agents,
+    addProperty,
+    editProperty,
+    deleteProperty,
+  } = useProperties();
   const [openModal, setOpenModal] = useState(false);
   const [editingId, setEditingId] = useState(null);
-  const [data, setData] = useState(null);
   const [editForm, setEditForm] = useState({
     title: "",
     price: "",
@@ -95,68 +98,34 @@ export default function Dashboard() {
     },
     video: "",
   });
-
-  // Load initial data
-  useEffect(() => {
-    fetch("/data/properties.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((jsonData) => {
-        setProperties(jsonData.properties);
-        setAgents(jsonData.agents);
-        setData(jsonData);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
-
-  // Function to update properties.json file
-  const updatePropertiesFile = async (newData) => {
-    try {
-      const response = await fetch('/data/properties.json', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newData)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update properties file');
-      }
-
-      return true;
-    } catch (error) {
-      console.error('Error updating properties file:', error);
-      return false;
-    }
-  };
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
-    if (name.includes(".")) {
-      const [parent, child] = name.split(".");
-      setNewProperty((prev) => ({
-        ...prev,
-        [parent]: {
-          ...prev[parent],
-          [child]: type === "checkbox" ? checked : value,
-        },
-      }));
-    } else {
-      setNewProperty((prev) => ({
+
+    if (editingId) {
+      // Handle edit form changes
+      setEditForm((prev) => ({
         ...prev,
         [name]: type === "checkbox" ? checked : value,
       }));
+    } else {
+      // Handle new property form changes
+      if (name.includes(".")) {
+        const [parent, child] = name.split(".");
+        setNewProperty((prev) => ({
+          ...prev,
+          [parent]: {
+            ...prev[parent],
+            [child]: type === "checkbox" ? checked : value,
+          },
+        }));
+      } else {
+        setNewProperty((prev) => ({
+          ...prev,
+          [name]: type === "checkbox" ? checked : value,
+        }));
+      }
     }
   };
 
@@ -175,7 +144,7 @@ export default function Dashboard() {
     setEditingId(null);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -187,14 +156,8 @@ export default function Dashboard() {
       cancelButtonText: "Cancel",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const updatedProperties = properties.filter((property) => property.id !== id);
-        const success = await updatePropertiesFile({
-          ...data,
-          properties: updatedProperties
-        });
-
+        const success = await deleteProperty(id);
         if (success) {
-          setProperties(updatedProperties);
           Swal.fire("Deleted!", "The property has been deleted.", "success");
         } else {
           Swal.fire("Error!", "Failed to delete the property.", "error");
@@ -204,17 +167,8 @@ export default function Dashboard() {
   };
 
   const handleSave = async (id) => {
-    const updatedProperties = properties.map((property) =>
-      property.id === id ? { ...property, ...editForm } : property
-    );
-
-    const success = await updatePropertiesFile({
-      ...data,
-      properties: updatedProperties
-    });
-
+    const success = await editProperty(id, editForm);
     if (success) {
-      setProperties(updatedProperties);
       setEditingId(null);
       Swal.fire("Updated!", "The property has been updated.", "success");
     } else {
@@ -222,23 +176,79 @@ export default function Dashboard() {
     }
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Required fields validation
+    if (!newProperty.title.trim()) {
+      newErrors.title = "Title is required";
+    }
+    if (!newProperty.price.trim()) {
+      newErrors.price = "Price is required";
+    } else if (isNaN(Number(newProperty.price.replace(/[^0-9]/g, "")))) {
+      newErrors.price = "Price must be a valid number";
+    }
+    if (!newProperty.address.trim()) {
+      newErrors.address = "Address is required";
+    }
+    if (!newProperty.type) {
+      newErrors.type = "Property type is required";
+    }
+    if (!newProperty.status) {
+      newErrors.status = "Status is required";
+    }
+    if (!newProperty.yearBuilt) {
+      newErrors.yearBuilt = "Year built is required";
+    } else if (
+      isNaN(newProperty.yearBuilt) ||
+      newProperty.yearBuilt < 1800 ||
+      newProperty.yearBuilt > new Date().getFullYear()
+    ) {
+      newErrors.yearBuilt = "Please enter a valid year";
+    }
+
+    // Overview validation
+    if (!newProperty.overview.bedrooms) {
+      newErrors["overview.bedrooms"] = "Number of bedrooms is required";
+    } else if (
+      isNaN(newProperty.overview.bedrooms) ||
+      newProperty.overview.bedrooms < 0
+    ) {
+      newErrors["overview.bedrooms"] = "Please enter a valid number";
+    }
+    if (!newProperty.overview.bathrooms) {
+      newErrors["overview.bathrooms"] = "Number of bathrooms is required";
+    } else if (
+      isNaN(newProperty.overview.bathrooms) ||
+      newProperty.overview.bathrooms < 0
+    ) {
+      newErrors["overview.bathrooms"] = "Please enter a valid number";
+    }
+    if (!newProperty.overview.area) {
+      newErrors["overview.area"] = "Area is required";
+    } else if (
+      isNaN(newProperty.overview.area) ||
+      newProperty.overview.area < 0
+    ) {
+      newErrors["overview.area"] = "Please enter a valid area";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleAddProperty = async () => {
-    const newId = `RH-${new Date().getFullYear()}-${Math.floor(
-      Math.random() * 1000
-    )
-      .toString()
-      .padStart(3, "0")}`;
+    if (!validateForm()) {
+      Swal.fire(
+        "Error!",
+        "Please fill in all required fields correctly.",
+        "error"
+      );
+      return;
+    }
 
-    const newPropertyWithId = { ...newProperty, id: newId };
-    const updatedProperties = [...properties, newPropertyWithId];
-
-    const success = await updatePropertiesFile({
-      ...data,
-      properties: updatedProperties
-    });
-
+    const success = await addProperty(newProperty);
     if (success) {
-      setProperties(updatedProperties);
       setNewProperty({
         id: "",
         title: "",
@@ -266,6 +276,7 @@ export default function Dashboard() {
         },
         video: "",
       });
+      setErrors({});
       setOpenModal(false);
       Swal.fire("Success!", "New property has been added.", "success");
     } else {
@@ -273,8 +284,10 @@ export default function Dashboard() {
     }
   };
 
-  if (loading) return <Typography>Loading...</Typography>;
-  if (error) return <Typography color="error">Error: {error}</Typography>;
+  // Update the form fields to show errors
+  const getError = (fieldName) => {
+    return errors[fieldName] || "";
+  };
 
   return (
     <Box sx={{ py: 4 }}>
@@ -305,7 +318,12 @@ export default function Dashboard() {
         <Grid
           container
           spacing={3}
-          sx={{ mb: 4, display: "flex", justifyContent: "center" }}
+          sx={{
+            mb: 4,
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: { xs: "column", md: "row" },
+          }}
         >
           {[
             {
@@ -374,68 +392,77 @@ export default function Dashboard() {
           ))}
         </Grid>
 
-        <div className="flex justify-around">
+        <div className="flex justify-around flex-col lg:flex-row">
+          {" "}
           {/* Properties List */}
-          <Grid container spacing={3} sx={{ mb: 4,width:"50%" }}>
-            <Grid item xs={12} sx={{width:"100%"}}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
+          <Grid
+            container
+            spacing={3}
+            sx={{
+              mb: 4,
+              width: {md:"100%" ,lg:"50%"},
+              flexDirection: { xs: "column", md: "row" },
+            }}
+          >
+            <Grid item xs={12} sx={{ width: "100%" }}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
                     Properties List
-                </Typography>
-                <List>
+                  </Typography>
+                  <List>
                     {properties.map((property) => (
-                    <React.Fragment key={property.id}>
-                      <ListItem
-                        secondaryAction={
-                          <Box>
-                            {editingId === property.id ? (
-                              <>
+                      <React.Fragment key={property.id}>
+                        <ListItem
+                          secondaryAction={
+                            <Box>
+                              {editingId === property.id ? (
+                                <>
                                   <IconButton
                                     edge="end"
                                     aria-label="save"
                                     onClick={() => handleSave(property.id)}
                                   >
-                                  <Save />
-                                </IconButton>
+                                    <Save />
+                                  </IconButton>
                                   <IconButton
                                     edge="end"
                                     aria-label="cancel"
                                     onClick={handleCancel}
                                   >
-                                  <Cancel />
-                                </IconButton>
-                              </>
-                            ) : (
-                              <>
+                                    <Cancel />
+                                  </IconButton>
+                                </>
+                              ) : (
+                                <>
                                   <IconButton
                                     edge="end"
                                     aria-label="edit"
                                     onClick={() => handleEdit(property)}
                                   >
-                                  <Edit />
-                                </IconButton>
+                                    <Edit />
+                                  </IconButton>
                                   <IconButton
                                     edge="end"
                                     aria-label="delete"
                                     onClick={() => handleDelete(property.id)}
                                     sx={{ color: "error.main" }}
                                   >
-                                  <Delete />
-                                </IconButton>
-                              </>
-                            )}
-                          </Box>
-                        }
-                      >
-                        <ListItemAvatar>
-                          <Avatar 
-                            variant="rounded" 
+                                    <Delete />
+                                  </IconButton>
+                                </>
+                              )}
+                            </Box>
+                          }
+                        >
+                          <ListItemAvatar>
+                            <Avatar
+                              variant="rounded"
                               src={property.images[0]}
                               sx={{ width: 100, height: 100, mr: 2 }}
-                          />
-                        </ListItemAvatar>
-                        {editingId === property.id ? (
+                            />
+                          </ListItemAvatar>
+                          {editingId === property.id ? (
                             <Box
                               sx={{
                                 display: "flex",
@@ -444,30 +471,30 @@ export default function Dashboard() {
                                 width: "100%",
                               }}
                             >
-                            <TextField
-                              name="title"
+                              <TextField
+                                name="title"
                                 label="Title"
-                              value={editForm.title}
-                              onChange={handleInputChange}
-                              size="small"
-                              fullWidth
-                            />
-                            <TextField
-                              name="price"
+                                value={editForm.title}
+                                onChange={handleInputChange}
+                                size="small"
+                                fullWidth
+                              />
+                              <TextField
+                                name="price"
                                 label="Price"
-                              value={editForm.price}
-                              onChange={handleInputChange}
-                              size="small"
-                              fullWidth
-                            />
-                            <TextField
-                              name="status"
+                                value={editForm.price}
+                                onChange={handleInputChange}
+                                size="small"
+                                fullWidth
+                              />
+                              <TextField
+                                name="status"
                                 label="Status"
-                              value={editForm.status}
-                              onChange={handleInputChange}
-                              size="small"
-                              fullWidth
-                            />
+                                value={editForm.status}
+                                onChange={handleInputChange}
+                                size="small"
+                                fullWidth
+                              />
                               <TextField
                                 name="type"
                                 label="Type"
@@ -480,13 +507,13 @@ export default function Dashboard() {
                                 name="address"
                                 label="Address"
                                 value={editForm.address}
-                              onChange={handleInputChange}
-                              size="small"
-                              fullWidth
-                            />
-                          </Box>
-                        ) : (
-                          <ListItemText
+                                onChange={handleInputChange}
+                                size="small"
+                                fullWidth
+                              />
+                            </Box>
+                          ) : (
+                            <ListItemText
                               primary={
                                 <Box
                                   sx={{
@@ -509,8 +536,8 @@ export default function Dashboard() {
                                   />
                                 </Box>
                               }
-                            secondary={
-                              <React.Fragment>
+                              secondary={
+                                <React.Fragment>
                                   <Box
                                     sx={{
                                       display: "flex",
@@ -525,8 +552,8 @@ export default function Dashboard() {
                                       color="primary"
                                       sx={{ fontWeight: "bold" }}
                                     >
-                                  {property.price}
-                                </Typography>
+                                      {property.price}
+                                    </Typography>
                                     <Typography
                                       component="span"
                                       variant="body2"
@@ -613,29 +640,28 @@ export default function Dashboard() {
                                       </Typography>
                                     </Box>
                                   </Box>
-                              </React.Fragment>
-                            }
-                          />
-                        )}
-                      </ListItem>
-                      <Divider variant="inset" component="li" />
-                    </React.Fragment>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
+                                </React.Fragment>
+                              }
+                            />
+                          )}
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                      </React.Fragment>
+                    ))}
+                  </List>
+                </CardContent>
+              </Card>
             </Grid>
           </Grid>
-
           {/* Agents List */}
           <Grid container spacing={3}>
             <Grid item xs={12}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
                     Agents List
-                </Typography>
-                <List>
+                  </Typography>
+                  <List>
                     {agents.map((agent) => (
                       <React.Fragment key={agent.id}>
                         <ListItem
@@ -647,13 +673,13 @@ export default function Dashboard() {
                             </Box>
                           }
                         >
-                        <ListItemAvatar>
+                          <ListItemAvatar>
                             <Avatar
                               src={agent.image}
                               sx={{ width: 80, height: 80, mr: 2 }}
                             />
-                        </ListItemAvatar>
-                        <ListItemText
+                          </ListItemAvatar>
+                          <ListItemText
                             primary={
                               <Box
                                 sx={{
@@ -668,8 +694,8 @@ export default function Dashboard() {
                                 <Chip label={agent.position} size="small" />
                               </Box>
                             }
-                          secondary={
-                            <React.Fragment>
+                            secondary={
+                              <React.Fragment>
                                 <Box
                                   sx={{
                                     display: "flex",
@@ -700,7 +726,7 @@ export default function Dashboard() {
                                     color="text.secondary"
                                   >
                                     {agent.phone}
-                              </Typography>
+                                  </Typography>
                                 </Box>
                                 <Box
                                   sx={{
@@ -742,18 +768,18 @@ export default function Dashboard() {
                                     </Typography>
                                   </Box>
                                 </Box>
-                            </React.Fragment>
-                          }
-                        />
-                      </ListItem>
-                      <Divider variant="inset" component="li" />
-                    </React.Fragment>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
+                              </React.Fragment>
+                            }
+                          />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                      </React.Fragment>
+                    ))}
+                  </List>
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
         </div>
         {/* Add Property Modal */}
         <Dialog
@@ -772,23 +798,32 @@ export default function Dashboard() {
                 name="title"
                 value={newProperty.title}
                 onChange={handleInputChange}
+                error={!!errors.title}
+                helperText={getError("title")}
                 fullWidth
+                required
               />
               <TextField
                 label="Price"
                 name="price"
                 value={newProperty.price}
                 onChange={handleInputChange}
+                error={!!errors.price}
+                helperText={getError("price")}
                 fullWidth
+                required
               />
               <TextField
                 label="Address"
                 name="address"
                 value={newProperty.address}
                 onChange={handleInputChange}
+                error={!!errors.address}
+                helperText={getError("address")}
                 fullWidth
+                required
               />
-              <FormControl fullWidth>
+              <FormControl fullWidth error={!!errors.type} required>
                 <InputLabel>Type</InputLabel>
                 <Select
                   name="type"
@@ -801,18 +836,22 @@ export default function Dashboard() {
                   <MenuItem value="House">House</MenuItem>
                   <MenuItem value="Office">Office</MenuItem>
                 </Select>
+                {errors.type && <FormHelperText>{errors.type}</FormHelperText>}
               </FormControl>
-              <FormControl fullWidth>
+              <FormControl fullWidth error={!!errors.status} required>
                 <InputLabel>Status</InputLabel>
                 <Select
                   name="status"
                   value={newProperty.status}
                   onChange={handleInputChange}
                   label="Status"
-              >
-                <MenuItem value="For Sale">For Sale</MenuItem>
-                <MenuItem value="For Rent">For Rent</MenuItem>
+                >
+                  <MenuItem value="For Sale">For Sale</MenuItem>
+                  <MenuItem value="For Rent">For Rent</MenuItem>
                 </Select>
+                {errors.status && (
+                  <FormHelperText>{errors.status}</FormHelperText>
+                )}
               </FormControl>
               <TextField
                 label="Year Built"
@@ -820,7 +859,10 @@ export default function Dashboard() {
                 type="number"
                 value={newProperty.yearBuilt}
                 onChange={handleInputChange}
+                error={!!errors.yearBuilt}
+                helperText={getError("yearBuilt")}
                 fullWidth
+                required
               />
 
               <Typography variant="h6" sx={{ mt: 2 }}>
@@ -834,7 +876,10 @@ export default function Dashboard() {
                     type="number"
                     value={newProperty.overview.bedrooms}
                     onChange={handleInputChange}
+                    error={!!errors["overview.bedrooms"]}
+                    helperText={getError("overview.bedrooms")}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -844,7 +889,10 @@ export default function Dashboard() {
                     type="number"
                     value={newProperty.overview.bathrooms}
                     onChange={handleInputChange}
+                    error={!!errors["overview.bathrooms"]}
+                    helperText={getError("overview.bathrooms")}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -864,7 +912,10 @@ export default function Dashboard() {
                     type="number"
                     value={newProperty.overview.area}
                     onChange={handleInputChange}
+                    error={!!errors["overview.area"]}
+                    helperText={getError("overview.area")}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -952,7 +1003,7 @@ export default function Dashboard() {
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setOpenModal(false)}>Cancel</Button>
-            <Button 
+            <Button
               onClick={handleAddProperty}
               variant="contained"
               color="primary"

@@ -1,24 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PropertyCard from "../common/PropertyCard";
 import MapFullWidth from "../common/MapFullWidth";
 import ComparePanel from "../common/ComparePanal";
 import SearchBar from "../common/SearchBar";
+import { useProperties } from "../common/PropertiesContext";
 
 const PropertiesGridPage = () => {
-  const [properties, setProperties] = useState([]);
-  const [filteredProperties, setFilteredProperties] = useState([]);
+  const { properties } = useProperties();
+  const [filteredProperties, setFilteredProperties] = useState(properties);
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 6;
-
-  useEffect(() => {
-    fetch('/data/properties.json')
-      .then(response => response.json())
-      .then(data => {
-        setProperties(data.properties);
-        setFilteredProperties(data.properties);
-      })
-      .catch(error => console.error('Error loading properties:', error));
-  }, []);
 
   const handleSearch = (filters) => {
     const results = properties.filter((property) => {
