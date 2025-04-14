@@ -17,14 +17,30 @@ export default function Testimonials() {
   React.useEffect(() => {
     const fetchTestimonials = async () => {
       try {
+        // Fetch testimonials from JSON file
         const response = await fetch("/public/data/testimonials.json");
-        console.log(response);
-
         if (!response.ok) {
           throw new Error("Failed to fetch testimonials");
         }
         const data = await response.json();
-        setTestimonials(data.testimonials);
+        
+        // Get client messages from localStorage
+        const clientMessages = JSON.parse(localStorage.getItem('clientMessages')) || [];
+        
+        // Transform client messages into testimonial format
+        const transformedMessages = clientMessages.map((message, index) => ({
+          id: `client-${index}`,
+          name: message.name,
+          role: "Client",
+          quote: message.message,
+          description: `Contact: ${message.email} | Phone: ${message.phone}`,
+          avatar: "https://mui.com/static/images/avatar/1.jpg" // Default avatar for clients
+        }));
+
+        // Combine JSON testimonials with client messages
+        const combinedTestimonials = [...data.testimonials, ...transformedMessages];
+        
+        setTestimonials(combinedTestimonials);
         setIsLoading(false);
       } catch (err) {
         setError(err.message);

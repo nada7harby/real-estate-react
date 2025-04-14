@@ -7,7 +7,7 @@ import FavCard from '../MyfavComponents/FavCard';
 const MyFavorites = () => {
     return (
         <div>
-            <FavNavbar/>
+            {/* <FavNavbar/> */}
             <FavCard />
         </div>
     );

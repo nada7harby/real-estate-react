@@ -15,7 +15,7 @@ function Banner() {
       </nav>
 
       {/* Main Content */}
-      <main className="container  lg:mx-auto pl-5 py-16 my-10 relative z-10">
+      <main className="  lg:mx-auto pl-5 py-16 my-10 relative z-10">
         <div className="w-full relative z-10 ">
           <div className="lg:flex justify-between	">
             <div>
@@ -39,7 +39,7 @@ function Banner() {
           </div>
 
           {/* Contact Information */}
-          <div className="mt-20 space-y-8 flex max-w-4xl  justify-between	">
+          <div className="mt-20 space-y-8 lg:flex max-w-4xl  justify-between	">
             <div>
               <p className="!text-white/70 mb-2 text-2xl">Email</p>
               <p className="!text-white text-3xl">hello@yoursite.com</p>

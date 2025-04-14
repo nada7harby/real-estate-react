@@ -50,48 +50,101 @@ function App() {
 
   const [mode, setMode] = useState("login");
 
+  // Layout component for pages with NavBar and Footer
+  const MainLayout = ({ children }) => (
+    <div className="min-h-screen flex flex-col">
+      <NavBar />
+      <main className="flex-grow">
+        {children}
+      </main>
+      <Footer />
+    </div>
+  );
+
+  // Layout component for auth pages without NavBar and Footer
+  const AuthLayout = ({ children }) => (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      {children}
+    </div>
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <PropertiesProvider>
         <CompareProvider>
           <FavoriteProvider>
             <Router>
-              <div className="min-h-screen flex flex-col">
-                <NavBar />
-                <main className="flex-grow">
-                  <Toaster position="top-center" reverseOrder={false} />
-                  <Elements stripe={stripePromise}>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route
-                        path="/login"
-                        element={
-                          <AuthForm
-                            mode={mode}
-                            setMode={setMode}
-                            onClose={() => {}}
-                          />
-                        }
-                      />
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route
-                        path="/properties"
-                        element={<PropertiesGridPage />}
-                      />
-                      <Route path="/property/:id" element={<PropertySingle />} />
-                      <Route path="/compared" element={<ComparePage />} />
-                      <Route path="/compare" element={<Compare />} />
-                      <Route path="/favorites" element={<MyFavorites />} />
-                      <Route path="/checkout" element={<CheckoutPage />} />
-                      <Route path="/payments" element={<NumberOfPayments />} />
-                      <Route path="/contact" element={<Contact />} />
-                      <Route path="/ClientTestimonials" element={<ClientTestimonials />} />
-                      
-                    </Routes>
-                  </Elements>
-                </main>
-                <Footer />
-              </div>
+              <Toaster position="top-center" reverseOrder={false} />
+              <Elements stripe={stripePromise}>
+                <Routes>
+                  <Route path="/login" element={
+                    <AuthLayout>
+                      <AuthForm mode="login" setMode={setMode} onClose={() => {}} />
+                    </AuthLayout>
+                  } />
+                  <Route path="/register" element={
+                    <AuthLayout>
+                      <AuthForm mode="register" setMode={setMode} onClose={() => {}} />
+                    </AuthLayout>
+                  } />
+
+                  <Route path="/" element={
+                    <MainLayout>
+                      <Home />
+                    </MainLayout>
+                  } />
+                  <Route path="/dashboard" element={
+                    <MainLayout>
+                      <Dashboard />
+                    </MainLayout>
+                  } />
+                  <Route path="/properties" element={
+                    <MainLayout>
+                      <PropertiesGridPage />
+                    </MainLayout>
+                  } />
+                  <Route path="/property/:id" element={
+                    <MainLayout>
+                      <PropertySingle />
+                    </MainLayout>
+                  } />
+                  <Route path="/compared" element={
+                    <MainLayout>
+                      <ComparePage />
+                    </MainLayout>
+                  } />
+                  <Route path="/compare" element={
+                    <MainLayout>
+                      <Compare />
+                    </MainLayout>
+                  } />
+                  <Route path="/MyFavorites" element={
+                    <MainLayout>
+                      <MyFavorites />
+                    </MainLayout>
+                  } />
+                  <Route path="/checkout" element={
+                    <MainLayout>
+                      <CheckoutPage />
+                    </MainLayout>
+                  } />
+                  <Route path="/payments" element={
+                    <MainLayout>
+                      <NumberOfPayments />
+                    </MainLayout>
+                  } />
+                  <Route path="/contact" element={
+                    <MainLayout>
+                      <Contact />
+                    </MainLayout>
+                  } />
+                  <Route path="/ClientTestimonials" element={
+                    <MainLayout>
+                      <ClientTestimonials />
+                    </MainLayout>
+                  } />
+                </Routes>
+              </Elements>
             </Router>
           </FavoriteProvider>
         </CompareProvider>
