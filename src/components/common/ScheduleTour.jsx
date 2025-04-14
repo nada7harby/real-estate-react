@@ -40,7 +40,7 @@ export default function ScheduleTour() {
 
   return (
     <div>
-      <div className="text-xl font-bold mt-10 mb-5">
+      <div className="text-xl font-bold mt-10 mb-5 ">
         Schedule A Tour
       </div>
       <div className="shedule__tour p-4 flex my-10">

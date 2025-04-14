@@ -31,7 +31,7 @@ const ComparePanel = () => {
               <li key={idx} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <img
-                    src={item.image}
+                    src={item.images[0]}
                     alt={item.title}
                     className="w-18 h-18 rounded-lg object-cover"
                   />
@@ -48,7 +48,7 @@ const ComparePanel = () => {
           </ul>
 
           {compareList.length >= 2 && (
-            <Link to="/compared">
+            <Link to="/compare">
               <button className="w-full bg-sky-400 hover:bg-sky-500 text-white py-2 rounded-full mt-5 transition duration-200">
                 Compare
               </button>
