@@ -4,12 +4,15 @@ import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { Link } from "react-router-dom";
+import { Link , useLocation } from "react-router-dom";
 
 const ComparePanel = () => {
   const { compareList, removeFromCompare } = useCompare();
+  
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation(); 
 
+  const isComparePage = location.pathname === "/compare";
   return (
     <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
       <div className="flex justify-end">
@@ -48,11 +51,11 @@ const ComparePanel = () => {
           </ul>
 
           {compareList.length >= 2 && (
-            <Link to="/compare">
-              <button className="w-full bg-sky-400 hover:bg-sky-500 text-white py-2 rounded-full mt-5 transition duration-200">
-                Compare
-              </button>
-            </Link>
+          <Link to={isComparePage ? "/checkout" : "/compare"}>
+          <button className="w-full bg-sky-400 hover:bg-sky-500 text-white py-2 rounded-full mt-5 transition duration-200">
+            {isComparePage ? "Payment" : "Compare"}
+          </button>
+          </Link>
           )}
         </div>
       )}

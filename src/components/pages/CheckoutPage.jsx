@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { TextField, Button, Card, Typography, Alert } from '@mui/material';
 import paymentInformation from "../../assets/images/Payment Information-rafiki.png";
+import { useCompare } from "../../components/common/CompareContext";
+
 const CheckoutPage = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -9,7 +11,7 @@ const CheckoutPage = () => {
   const [email, setEmail] = useState('');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-
+  let { totalPrice } = useCompare();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -113,6 +115,9 @@ const CheckoutPage = () => {
             >
               Confirm Payment
             </Button>
+            <div className="text-xl font-bold text-blue-600">
+              Total Price: ${totalPrice}
+            </div>
           </form>
         </div>
       </div>

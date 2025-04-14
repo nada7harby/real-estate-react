@@ -21,9 +21,12 @@ const CompareProvider = ({ children }) => {
   const removeFromCompare = (title) => {
     setCompareList(compareList.filter(p => p.title !== title));
   };
+  let  totalPrice = compareList.reduce((sum, item) => {
+    const priceNumber = parseInt(item.price.replace(/[^0-9]/g, ''));
+    return sum + (priceNumber || 0)}, 0);
 
   return (
-    <CompareContext.Provider value={{ compareList, addToCompare, removeFromCompare }}>
+    <CompareContext.Provider value={{ compareList, addToCompare, removeFromCompare , totalPrice }}>
       {children}
     </CompareContext.Provider>
   );
