@@ -36,6 +36,7 @@ export default function Testimonials() {
           role: "Client",
           quote: message.message,
           //description: `Contact: ${message.email} | Phone: ${message.phone}`,
+          description:"The attention to detail and user experience is exceptional. Highly recommended for any web project!",
           avatar: message.image || defaultImage// Default avatar for clients
         }));
 
