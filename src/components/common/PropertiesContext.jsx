@@ -16,7 +16,10 @@ export const PropertiesProvider = ({ children }) => {
                     setProperties(savedProperties);
                 } else {
                     // If no data in localStorage, load from JSON file
-                    const propertiesResponse = await fetch("../../assets/Data/properties.json");
+                    const propertiesResponse = await fetch("/data/properties.json");
+                    if (!propertiesResponse.ok) {
+                        throw new Error('Failed to load properties data');
+                    }
                     const propertiesData = await propertiesResponse.json();
                     setProperties(propertiesData.properties);
                     localStorage.setItem('properties', JSON.stringify(propertiesData.properties));
@@ -28,13 +31,34 @@ export const PropertiesProvider = ({ children }) => {
                     setAgents(savedAgents);
                 } else {
                     // If no data in localStorage, load from JSON file
-                    const agentsResponse = await fetch("/public/data/agents.json");
+                    const agentsResponse = await fetch("/data/agents.json");
+                    if (!agentsResponse.ok) {
+                        throw new Error('Failed to load agents data');
+                    }
                     const agentsData = await agentsResponse.json();
                     setAgents(agentsData.agents);
                     localStorage.setItem('agents', JSON.stringify(agentsData.agents));
                 }
             } catch (error) {
                 console.error("Error loading initial data:", error);
+                // If there's an error, try to load from public folder
+                try {
+                    const propertiesResponse = await fetch("/public/data/properties.json");
+                    if (propertiesResponse.ok) {
+                        const propertiesData = await propertiesResponse.json();
+                        setProperties(propertiesData.properties);
+                        localStorage.setItem('properties', JSON.stringify(propertiesData.properties));
+                    }
+
+                    const agentsResponse = await fetch("/public/data/agents.json");
+                    if (agentsResponse.ok) {
+                        const agentsData = await agentsResponse.json();
+                        setAgents(agentsData.agents);
+                        localStorage.setItem('agents', JSON.stringify(agentsData.agents));
+                    }
+                } catch (fallbackError) {
+                    console.error("Error loading fallback data:", fallbackError);
+                }
             }
         };
 
