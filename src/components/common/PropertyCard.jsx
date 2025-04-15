@@ -15,7 +15,7 @@ const PropertyCard = ({
   const { compareList, addToCompare } = useCompare();
   const { toggleFavorite, isFavorite } = useFavorite();
   const navigate = useNavigate();
-  const isFav = isFavorite(title); 
+  const isFav = isFavorite(id); 
 
   const handleFav = (e) => {
     e.stopPropagation();
