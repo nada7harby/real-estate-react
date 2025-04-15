@@ -436,64 +436,64 @@ const Dashboard = () => {
             }}
           >
             <Grid item xs={12} sx={{ width: "100%" }}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
+            <Card>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
                     Properties List
-                  </Typography>
-                  <List>
+                </Typography>
+                <List>
                     {properties.map((property) => (
-                      <React.Fragment key={property.id}>
-                        <ListItem
-                          secondaryAction={
-                            <Box>
-                              {editingId === property.id ? (
-                                <>
+                    <React.Fragment key={property.id}>
+                      <ListItem
+                        secondaryAction={
+                          <Box>
+                            {editingId === property.id ? (
+                              <>
                                   <IconButton
                                     edge="end"
                                     aria-label="save"
                                     onClick={() => handleSave(property.id)}
                                   >
-                                    <Save />
-                                  </IconButton>
+                                  <Save />
+                                </IconButton>
                                   <IconButton
                                     edge="end"
                                     aria-label="cancel"
                                     onClick={handleCancel}
                                   >
-                                    <Cancel />
-                                  </IconButton>
-                                </>
-                              ) : (
-                                <>
+                                  <Cancel />
+                                </IconButton>
+                              </>
+                            ) : (
+                              <>
                                   <IconButton
                                     edge="end"
                                     aria-label="edit"
                                     onClick={() => handleEdit(property)}
                                   >
-                                    <Edit />
-                                  </IconButton>
+                                  <Edit />
+                                </IconButton>
                                   <IconButton
                                     edge="end"
                                     aria-label="delete"
                                     onClick={() => handleDelete(property.id)}
                                     sx={{ color: "error.main" }}
                                   >
-                                    <Delete />
-                                  </IconButton>
-                                </>
-                              )}
-                            </Box>
-                          }
-                        >
-                          <ListItemAvatar>
-                            <Avatar
-                              variant="rounded"
+                                  <Delete />
+                                </IconButton>
+                              </>
+                            )}
+                          </Box>
+                        }
+                      >
+                        <ListItemAvatar>
+                          <Avatar 
+                            variant="rounded" 
                               src={property.images[0]}
                               sx={{ width: 100, height: 100, mr: 2 }}
-                            />
-                          </ListItemAvatar>
-                          {editingId === property.id ? (
+                          />
+                        </ListItemAvatar>
+                        {editingId === property.id ? (
                             <Box
                               sx={{
                                 display: "flex",
@@ -502,30 +502,30 @@ const Dashboard = () => {
                                 width: "100%",
                               }}
                             >
-                              <TextField
-                                name="title"
+                            <TextField
+                              name="title"
                                 label="Title"
-                                value={editForm.title}
-                                onChange={handleInputChange}
-                                size="small"
-                                fullWidth
-                              />
-                              <TextField
-                                name="price"
+                              value={editForm.title}
+                              onChange={handleInputChange}
+                              size="small"
+                              fullWidth
+                            />
+                            <TextField
+                              name="price"
                                 label="Price"
-                                value={editForm.price}
-                                onChange={handleInputChange}
-                                size="small"
-                                fullWidth
-                              />
-                              <TextField
-                                name="status"
+                              value={editForm.price}
+                              onChange={handleInputChange}
+                              size="small"
+                              fullWidth
+                            />
+                            <TextField
+                              name="status"
                                 label="Status"
-                                value={editForm.status}
-                                onChange={handleInputChange}
-                                size="small"
-                                fullWidth
-                              />
+                              value={editForm.status}
+                              onChange={handleInputChange}
+                              size="small"
+                              fullWidth
+                            />
                               <TextField
                                 name="type"
                                 label="Type"
@@ -538,13 +538,13 @@ const Dashboard = () => {
                                 name="address"
                                 label="Address"
                                 value={editForm.address}
-                                onChange={handleInputChange}
-                                size="small"
-                                fullWidth
-                              />
-                            </Box>
-                          ) : (
-                            <ListItemText
+                              onChange={handleInputChange}
+                              size="small"
+                              fullWidth
+                            />
+                          </Box>
+                        ) : (
+                          <ListItemText
                               primary={
                                 <Box
                                   sx={{
@@ -567,8 +567,8 @@ const Dashboard = () => {
                                   />
                                 </Box>
                               }
-                              secondary={
-                                <React.Fragment>
+                            secondary={
+                              <React.Fragment>
                                   <Box
                                     sx={{
                                       display: "flex",
@@ -583,8 +583,8 @@ const Dashboard = () => {
                                       color="primary"
                                       sx={{ fontWeight: "bold" }}
                                     >
-                                      {property.price}
-                                    </Typography>
+                                  {property.price}
+                                </Typography>
                                     <Typography
                                       component="span"
                                       variant="body2"
@@ -665,29 +665,29 @@ const Dashboard = () => {
                                       </Typography>
                                     </Box>
                                   </Box>
-                                </React.Fragment>
-                              }
-                            />
-                          )}
-                        </ListItem>
-                        <Divider variant="inset" component="li" />
-                      </React.Fragment>
-                    ))}
-                  </List>
-                </CardContent>
-              </Card>
+                              </React.Fragment>
+                            }
+                          />
+                        )}
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </React.Fragment>
+                  ))}
+                </List>
+              </CardContent>
+            </Card>
             </Grid>
           </Grid>
 
           {/* Agents List */}
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
+            <Card>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
                     Agents List
-                  </Typography>
-                  <List>
+                </Typography>
+                <List>
                     {agents.map((agent) => (
                       <React.Fragment key={agent.id}>
                         <ListItem
@@ -699,13 +699,13 @@ const Dashboard = () => {
                             </Box>
                           }
                         >
-                          <ListItemAvatar>
+                        <ListItemAvatar>
                             <Avatar
                               src={agent.image}
                               sx={{ width: 80, height: 80, mr: 2 }}
                             />
-                          </ListItemAvatar>
-                          <ListItemText
+                        </ListItemAvatar>
+                        <ListItemText
                             primary={
                               <Box
                                 sx={{
@@ -720,8 +720,8 @@ const Dashboard = () => {
                                 <Chip label={agent.position} size="small" />
                               </Box>
                             }
-                            secondary={
-                              <React.Fragment>
+                          secondary={
+                            <React.Fragment>
                                 <Box
                                   sx={{
                                     display: "flex",
@@ -752,7 +752,7 @@ const Dashboard = () => {
                                     color="text.secondary"
                                   >
                                     {agent.phone}
-                                  </Typography>
+                              </Typography>
                                 </Box>
                                 <Box
                                   sx={{
@@ -794,18 +794,18 @@ const Dashboard = () => {
                                     </Typography>
                                   </Box>
                                 </Box>
-                              </React.Fragment>
-                            }
-                          />
-                        </ListItem>
-                        <Divider variant="inset" component="li" />
-                      </React.Fragment>
-                    ))}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
+                            </React.Fragment>
+                          }
+                        />
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </React.Fragment>
+                  ))}
+                </List>
+              </CardContent>
+            </Card>
           </Grid>
+        </Grid>
         </div>
 
         {/* Add Property Modal */}
@@ -872,9 +872,9 @@ const Dashboard = () => {
                   value={newProperty.status}
                   onChange={handleInputChange}
                   label="Status"
-                >
-                  <MenuItem value="For Sale">For Sale</MenuItem>
-                  <MenuItem value="For Rent">For Rent</MenuItem>
+              >
+                <MenuItem value="For Sale">For Sale</MenuItem>
+                <MenuItem value="For Rent">For Rent</MenuItem>
                 </Select>
                 {errors.status && (
                   <FormHelperText>{errors.status}</FormHelperText>
@@ -1030,7 +1030,7 @@ const Dashboard = () => {
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setOpenModal(false)}>Cancel</Button>
-            <Button
+            <Button 
               onClick={handleAddProperty}
               variant="contained"
               color="primary"

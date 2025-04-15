@@ -18,7 +18,7 @@ export default function Testimonials() {
     const fetchTestimonials = async () => {
       try {
         // Fetch testimonials from JSON file
-        const response = await fetch("../../assets/Data/testimonials.json");
+        const response = await fetch("data/testimonials.json");
         if (!response.ok) {
           throw new Error("Failed to fetch testimonials");
         }
