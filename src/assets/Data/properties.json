@@ -1,0 +1,706 @@
+{
+  "properties": [
+    {
+      "id": "RH-2015-06",
+      "title": "Home in Merrick Way",
+      "price": "$540,000",
+      "address": "Merrick Way, Miami, FL 33134, USA",
+      "type": "Villa",
+      "status": "For Sale",
+      "yearBuilt": 2019,
+      "images": [
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 3,
+        "bedrooms": 3,
+        "garage": 2,
+        "area": 4300,
+        "lotSize": 5400
+      },
+      "description": "Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana, in-laws quarters. Charming living area features fireplace and fabulous art deco details.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Main Floor Master Bedroom, Walk-In Closet" },
+        { "name": "DINING AREA:", "desc": "Breakfast Counter/Bar, Living/Dining Combo" },
+        { "name": "DOORS & WINDOWS:", "desc": "Bay Window" },
+        { "name": "ENTRY LOCATION:", "desc": "Mid Level" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Wood" },
+        { "name": "FIREPLACE FUEL:", "desc": "Pellet Stove" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Living Room" },
+        { "name": "FLOORS:", "desc": "Raised Foundation, Vinyl Tile, Carpet, Wood" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 2,
+        "HomeTheater": true,
+        "Lawn": true,
+        "marbleFloors": true
+      },
+      "video": "/images/blog-post-1.jpg"
+    },
+    {
+      "id": "RH-2016-07",
+      "title": "Modern Apartment in Downtown",
+      "price": "$750,000",
+      "address": "Downtown, Los Angeles, CA 90015, USA",
+      "type": "Apartment",
+      "status": "For Sale",
+      "yearBuilt": 2021,
+      "images": [
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 2,
+        "bedrooms": 2,
+        "garage": 1,
+        "area": 2200,
+        "lotSize": 0
+      },
+      "description": "A sleek modern apartment with open space design and skyline views. Comes fully furnished with high-end appliances.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Panoramic Windows, Closet Organizers" },
+        { "name": "DINING AREA:", "desc": "Kitchen Island, Open Layout" },
+        { "name": "DOORS & WINDOWS:", "desc": "Sliding Glass Doors" },
+        { "name": "ENTRY LOCATION:", "desc": "Lobby" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Concrete" },
+        { "name": "FIREPLACE FUEL:", "desc": "Electric" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Bedroom" },
+        { "name": "FLOORS:", "desc": "Polished Concrete, Hardwood" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 1,
+        "HomeTheater": false,
+        "Lawn": false,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-2.jpg"
+    },
+    {
+      "id": "RH-2017-08",
+      "title": "Countryside Family House",
+      "price": "$320,000",
+      "address": "Green Hills, Nashville, TN 37215, USA",
+      "type": "House",
+      "status": "For Sale",
+      "yearBuilt": 2015,
+      "images": [
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-6.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-4.jpg"
+      ],
+      "overview": {
+        "bathrooms": 2,
+        "bedrooms": 4,
+        "garage": 2,
+        "area": 3000,
+        "lotSize": 8000
+      },
+      "description": "Lovely countryside family home with big backyard and garden. Perfect for raising a family.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Large Windows, Carpeting" },
+        { "name": "DINING AREA:", "desc": "Formal Dining Room" },
+        { "name": "DOORS & WINDOWS:", "desc": "French Doors" },
+        { "name": "ENTRY LOCATION:", "desc": "Front Porch" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Brick" },
+        { "name": "FIREPLACE FUEL:", "desc": "Wood" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Family Room" },
+        { "name": "FLOORS:", "desc": "Wood, Carpet" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 1,
+        "HomeTheater": false,
+        "Lawn": true,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-3.jpg"
+    },
+    {
+      "id": "RH-2018-09",
+      "title": "Beachside Bungalow",
+      "price": "$1,200,000",
+      "address": "Malibu Coast, CA 90265, USA",
+      "type": "Bungalow",
+      "status": "For Sale",
+      "yearBuilt": 2017,
+      "images": [
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 2,
+        "bedrooms": 3,
+        "garage": 1,
+        "area": 2500,
+        "lotSize": 6000
+      },
+      "description": "Wake up to ocean breezes in this beautiful beachside bungalow. A perfect weekend getaway or summer home.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Ocean View, Balcony Access" },
+        { "name": "DINING AREA:", "desc": "Outdoor Patio Dining" },
+        { "name": "DOORS & WINDOWS:", "desc": "Floor-to-Ceiling Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Beachfront Path" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Stucco" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Living Room" },
+        { "name": "FLOORS:", "desc": "Tile, Laminate" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 1,
+        "HomeTheater": false,
+        "Lawn": true,
+        "marbleFloors": true
+      },
+      "video": "/images/blog-post-4.jpg"
+    },
+    {
+      "id": "RH-2019-10",
+      "title": "Luxury Penthouse",
+      "price": "$2,500,000",
+      "address": "5th Avenue, New York, NY 10011, USA",
+      "type": "Penthouse",
+      "status": "For Sale",
+      "yearBuilt": 2022,
+      "images": [
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-6.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-2.jpg"
+      ],
+      "overview": {
+        "bathrooms": 4,
+        "bedrooms": 3,
+        "garage": 2,
+        "area": 3500,
+        "lotSize": 0
+      },
+      "description": "Experience the height of luxury living in this stunning penthouse with panoramic city views and private rooftop.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Luxury Ensuite, Skylight" },
+        { "name": "DINING AREA:", "desc": "Open Concept, Formal Dining" },
+        { "name": "DOORS & WINDOWS:", "desc": "Smart Glass Walls" },
+        { "name": "ENTRY LOCATION:", "desc": "Private Elevator" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Glass & Steel" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Main Lounge" },
+        { "name": "FLOORS:", "desc": "Marble, Hardwood" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 2,
+        "HomeTheater": true,
+        "Lawn": false,
+        "marbleFloors": true
+      },
+      "video": "/images/blog-post-5.jpg"
+    },
+    {
+      "id": "RH-2020-11",
+      "title": "Historic Townhouse",
+      "price": "$1,800,000",
+      "address": "Georgetown, Washington DC 20007, USA",
+      "type": "Townhouse",
+      "status": "For Sale",
+      "yearBuilt": 1890,
+      "images": [
+        "/images/blog-post-6.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-5.jpg"
+      ],
+      "overview": {
+        "bathrooms": 3,
+        "bedrooms": 4,
+        "garage": 1,
+        "area": 3200,
+        "lotSize": 2000
+      },
+      "description": "Beautifully restored historic townhouse in the heart of Georgetown. Original details preserved with modern amenities.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Original Fireplaces, High Ceilings" },
+        { "name": "DINING AREA:", "desc": "Formal Dining Room" },
+        { "name": "DOORS & WINDOWS:", "desc": "Original Wood Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Front Steps" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Brick" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Living Room, Bedrooms" },
+        { "name": "FLOORS:", "desc": "Hardwood, Original" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 3,
+        "HomeTheater": false,
+        "Lawn": false,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-6.jpg"
+    },
+    {
+      "id": "RH-2021-12",
+      "title": "Mountain View Cabin",
+      "price": "$450,000",
+      "address": "Aspen, CO 81611, USA",
+      "type": "Cabin",
+      "status": "For Sale",
+      "yearBuilt": 2010,
+      "images": [
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 2,
+        "bedrooms": 3,
+        "garage": 1,
+        "area": 1800,
+        "lotSize": 10000
+      },
+      "description": "Cozy mountain cabin with stunning views of the Rockies. Perfect for year-round outdoor activities.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Wood Paneling, Mountain Views" },
+        { "name": "DINING AREA:", "desc": "Rustic Dining Room" },
+        { "name": "DOORS & WINDOWS:", "desc": "Large Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Front Porch" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Log" },
+        { "name": "FIREPLACE FUEL:", "desc": "Wood" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Great Room" },
+        { "name": "FLOORS:", "desc": "Hardwood, Stone" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 2,
+        "HomeTheater": false,
+        "Lawn": true,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-1.jpg"
+    },
+    {
+      "id": "RH-2022-13",
+      "title": "Waterfront Condo",
+      "price": "$1,100,000",
+      "address": "Harbor Island, San Diego, CA 92101, USA",
+      "type": "Condo",
+      "status": "For Sale",
+      "yearBuilt": 2018,
+      "images": [
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg"
+      ],
+      "overview": {
+        "bathrooms": 2,
+        "bedrooms": 2,
+        "garage": 1,
+        "area": 1500,
+        "lotSize": 0
+      },
+      "description": "Stunning waterfront condo with panoramic views of the bay. Modern amenities and resort-style living.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Water Views, Walk-in Closets" },
+        { "name": "DINING AREA:", "desc": "Open Concept" },
+        { "name": "DOORS & WINDOWS:", "desc": "Floor-to-Ceiling Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Lobby" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Concrete" },
+        { "name": "FIREPLACE FUEL:", "desc": "Electric" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Living Room" },
+        { "name": "FLOORS:", "desc": "Tile, Hardwood" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 1,
+        "HomeTheater": true,
+        "Lawn": false,
+        "marbleFloors": true
+      },
+      "video": "/images/blog-post-2.jpg"
+    },
+    {
+      "id": "RH-2023-14",
+      "title": "Garden Cottage",
+      "price": "$380,000",
+      "address": "Portland, OR 97202, USA",
+      "type": "Cottage",
+      "status": "For Sale",
+      "yearBuilt": 1920,
+      "images": [
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 1,
+        "bedrooms": 2,
+        "garage": 0,
+        "area": 1200,
+        "lotSize": 5000
+      },
+      "description": "Charming garden cottage with beautiful landscaping and vintage character. Perfect for artists or small families.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Built-in Bookshelves" },
+        { "name": "DINING AREA:", "desc": "Sunroom Dining" },
+        { "name": "DOORS & WINDOWS:", "desc": "Original Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Garden Path" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Wood" },
+        { "name": "FIREPLACE FUEL:", "desc": "Wood" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Living Room" },
+        { "name": "FLOORS:", "desc": "Hardwood, Original" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 1,
+        "HomeTheater": false,
+        "Lawn": true,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-3.jpg"
+    },
+    {
+      "id": "RH-2024-15",
+      "title": "Luxury Loft",
+      "price": "$1,500,000",
+      "address": "Soho, New York, NY 10012, USA",
+      "type": "Loft",
+      "status": "For Sale",
+      "yearBuilt": 2015,
+      "images": [
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg"
+      ],
+      "overview": {
+        "bathrooms": 2,
+        "bedrooms": 2,
+        "garage": 0,
+        "area": 2000,
+        "lotSize": 0
+      },
+      "description": "Converted industrial loft with high ceilings and original architectural details. Perfect for urban living.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Open Concept, High Ceilings" },
+        { "name": "DINING AREA:", "desc": "Open Kitchen" },
+        { "name": "DOORS & WINDOWS:", "desc": "Large Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Elevator" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Brick" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Living Area" },
+        { "name": "FLOORS:", "desc": "Concrete, Polished" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 1,
+        "HomeTheater": true,
+        "Lawn": false,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-4.jpg"
+    },
+    {
+      "id": "RH-2025-16",
+      "title": "Mediterranean Villa",
+      "price": "$3,200,000",
+      "address": "Beverly Hills, CA 90210, USA",
+      "type": "Villa",
+      "status": "For Sale",
+      "yearBuilt": 2010,
+      "images": [
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 5,
+        "bedrooms": 5,
+        "garage": 3,
+        "area": 6000,
+        "lotSize": 15000
+      },
+      "description": "Luxurious Mediterranean-style villa with stunning architecture and resort-style amenities.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Ensuite Baths, Balconies" },
+        { "name": "DINING AREA:", "desc": "Formal Dining, Outdoor Dining" },
+        { "name": "DOORS & WINDOWS:", "desc": "Arched Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Courtyard" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Stucco" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Multiple Locations" },
+        { "name": "FLOORS:", "desc": "Marble, Tile" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 2,
+        "HomeTheater": true,
+        "Lawn": true,
+        "marbleFloors": true
+      },
+      "video": "/images/blog-post-5.jpg"
+    },
+    {
+      "id": "RH-2026-17",
+      "title": "Modern Farmhouse",
+      "price": "$850,000",
+      "address": "Austin, TX 78701, USA",
+      "type": "Farmhouse",
+      "status": "For Sale",
+      "yearBuilt": 2018,
+      "images": [
+        "/images/blog-post-6.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg"
+      ],
+      "overview": {
+        "bathrooms": 3,
+        "bedrooms": 4,
+        "garage": 2,
+        "area": 3500,
+        "lotSize": 10000
+      },
+      "description": "Contemporary farmhouse with modern amenities and classic charm. Perfect for family living.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Walk-in Closets" },
+        { "name": "DINING AREA:", "desc": "Farmhouse Table" },
+        { "name": "DOORS & WINDOWS:", "desc": "Black Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Front Porch" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Wood" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Great Room" },
+        { "name": "FLOORS:", "desc": "Hardwood" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 2,
+        "HomeTheater": true,
+        "Lawn": true,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-6.jpg"
+    },
+    {
+      "id": "RH-2027-18",
+      "title": "Beachfront Estate",
+      "price": "$4,500,000",
+      "address": "Malibu, CA 90265, USA",
+      "type": "Estate",
+      "status": "For Sale",
+      "yearBuilt": 2015,
+      "images": [
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 6,
+        "bedrooms": 5,
+        "garage": 3,
+        "area": 8000,
+        "lotSize": 20000
+      },
+      "description": "Magnificent beachfront estate with private beach access and stunning ocean views.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Ocean Views, Ensuite Baths" },
+        { "name": "DINING AREA:", "desc": "Formal Dining, Outdoor Dining" },
+        { "name": "DOORS & WINDOWS:", "desc": "Floor-to-Ceiling Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Gated Driveway" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Concrete" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Multiple Locations" },
+        { "name": "FLOORS:", "desc": "Marble, Hardwood" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 2,
+        "HomeTheater": true,
+        "Lawn": true,
+        "marbleFloors": true
+      },
+      "video": "/images/blog-post-1.jpg"
+    },
+    {
+      "id": "RH-2028-19",
+      "title": "Urban Townhouse",
+      "price": "$1,200,000",
+      "address": "Chicago, IL 60601, USA",
+      "type": "Townhouse",
+      "status": "For Sale",
+      "yearBuilt": 2010,
+      "images": [
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg"
+      ],
+      "overview": {
+        "bathrooms": 3,
+        "bedrooms": 3,
+        "garage": 2,
+        "area": 2800,
+        "lotSize": 0
+      },
+      "description": "Modern urban townhouse in the heart of the city. Perfect for city living with all amenities nearby.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Walk-in Closets" },
+        { "name": "DINING AREA:", "desc": "Open Concept" },
+        { "name": "DOORS & WINDOWS:", "desc": "Large Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Private Entrance" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Brick" },
+        { "name": "FIREPLACE FUEL:", "desc": "Gas" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Living Room" },
+        { "name": "FLOORS:", "desc": "Hardwood" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 3,
+        "HomeTheater": true,
+        "Lawn": false,
+        "marbleFloors": true
+      },
+      "video": "/images/blog-post-2.jpg"
+    },
+    {
+      "id": "RH-2029-20",
+      "title": "Lakeside Retreat",
+      "price": "$950,000",
+      "address": "Lake Tahoe, CA 96150, USA",
+      "type": "Retreat",
+      "status": "For Sale",
+      "yearBuilt": 2012,
+      "images": [
+        "/images/blog-post-3.jpg",
+        "/images/blog-post-5.jpg",
+        "/images/blog-post-1.jpg",
+        "/images/blog-post-2.jpg",
+        "/images/blog-post-4.jpg",
+        "/images/blog-post-6.jpg"
+      ],
+      "overview": {
+        "bathrooms": 3,
+        "bedrooms": 4,
+        "garage": 2,
+        "area": 3200,
+        "lotSize": 15000
+      },
+      "description": "Beautiful lakeside retreat with private dock and stunning lake views. Perfect for year-round enjoyment.",
+      "additionalDetails": [
+        { "name": "BEDROOM FEATURES:", "desc": "Lake Views, Balconies" },
+        { "name": "DINING AREA:", "desc": "Outdoor Dining" },
+        { "name": "DOORS & WINDOWS:", "desc": "Large Windows" },
+        { "name": "ENTRY LOCATION:", "desc": "Private Drive" },
+        { "name": "EXTERIOR CONSTRUCTION:", "desc": "Wood" },
+        { "name": "FIREPLACE FUEL:", "desc": "Wood" },
+        { "name": "FIREPLACE LOCATION:", "desc": "Great Room" },
+        { "name": "FLOORS:", "desc": "Hardwood, Tile" }
+      ],
+      "propertiesCommonNotes": "This is a common note that can be displayed on all properties but controlled from one simple option.",
+      "features": {
+        "stories": 2,
+        "HomeTheater": true,
+        "Lawn": true,
+        "marbleFloors": false
+      },
+      "video": "/images/blog-post-3.jpg"
+    }
+  ],
+  "agents": [
+    {
+      "id": "AG-001",
+      "name": "John Smith",
+      "email": "john.smith@realestate.com",
+      "phone": "+1 (555) 123-4567",
+      "image": "/images/agent-1.jpg",
+      "position": "Senior Agent",
+      "properties": ["RH-2015-06", "RH-2016-07", "RH-2017-08"],
+      "rating": 4.8,
+      "reviews": 125
+    },
+    {
+      "id": "AG-002",
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@realestate.com",
+      "phone": "+1 (555) 234-5678",
+      "image": "/images/agent-2.jpg",
+      "position": "Luxury Property Specialist",
+      "properties": ["RH-2018-09", "RH-2019-10", "RH-2020-11"],
+      "rating": 4.9,
+      "reviews": 98
+    },
+    {
+      "id": "AG-003",
+      "name": "Michael Brown",
+      "email": "michael.brown@realestate.com",
+      "phone": "+1 (555) 345-6789",
+      "image": "/images/agent-3.jpg",
+      "position": "Commercial Property Expert",
+      "properties": ["RH-2021-12", "RH-2022-13", "RH-2023-14"],
+      "rating": 4.7,
+      "reviews": 87
+    },
+    {
+      "id": "AG-004",
+      "name": "Emily Davis",
+      "email": "emily.davis@realestate.com",
+      "phone": "+1 (555) 456-7890",
+      "image": "/images/agent-4.jpg",
+      "position": "Residential Specialist",
+      "properties": ["RH-2024-15", "RH-2025-16", "RH-2026-17"],
+      "rating": 4.9,
+      "reviews": 112
+    },
+    {
+      "id": "AG-005",
+      "name": "David Wilson",
+      "email": "david.wilson@realestate.com",
+      "phone": "+1 (555) 567-8901",
+      "image": "/images/agent-5.jpg",
+      "position": "Investment Property Advisor",
+      "properties": ["RH-2027-18", "RH-2028-19", "RH-2029-20"],
+      "rating": 4.8,
+      "reviews": 95
+    }
+  ]
+} 

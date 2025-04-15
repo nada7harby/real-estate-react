@@ -16,7 +16,7 @@ export const PropertiesProvider = ({ children }) => {
                     setProperties(savedProperties);
                 } else {
                     // If no data in localStorage, load from JSON file
-                    const propertiesResponse = await fetch("/public/data/properties.json");
+                    const propertiesResponse = await fetch("../../assets/Data/properties.json");
                     const propertiesData = await propertiesResponse.json();
                     setProperties(propertiesData.properties);
                     localStorage.setItem('properties', JSON.stringify(propertiesData.properties));
