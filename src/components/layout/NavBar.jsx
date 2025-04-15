@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Facebook, Twitter, Instagram, YouTube, Phone, Person, Menu, Close, Favorite } from "@mui/icons-material";
 import logo from "../../assets/images/ultra-header-logo.png";
 import AuthForm from "../pages/AuthForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PersonIconWithPopover from "./PersonIconWithPopover";
+import { useAuth } from "../common/AuthContext";
 
 const NavBar = () => {
+    const { isAuthenticated, user, logout } = useAuth();
+    const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
     const [showAuthForm, setShowAuthForm] = useState(false);
     const [mode, setMode] = useState("login");
@@ -21,10 +24,8 @@ const NavBar = () => {
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem('currentUser');
-        setIsLoggedIn(false);
-        setUserRole(null);
-        window.location.href = '/';
+        logout();
+        navigate("/");
     };
 
     return (
@@ -89,7 +90,7 @@ const NavBar = () => {
                 {/* Menu Links */}
                 <ul className="flex space-x-6 text-gray-700 font-medium">
                     <li><Link to="/" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Home</Link></li>
-                    {isLoggedIn && userRole === 'admin' && (
+                    {isAuthenticated && user?.role === 'admin' && (
                         <li><Link to="/dashboard" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Dashboard</Link></li>
                     )}
                     <li><Link to="/properties" className="hover:bg-blue-100 hover:text-blue-500 px-4 py-2 rounded-md transition duration-300">Real Estate</Link></li>
@@ -131,7 +132,7 @@ const NavBar = () => {
                     </div>
                     <ul className="space-y-4 px-6 text-lg">
                         <li><Link to="/" className="block py-2">Home</Link></li>
-                        {isLoggedIn && userRole === 'admin' && (
+                        {isAuthenticated && user?.role === 'admin' && (
                             <li><Link to="/dashboard" className="block py-2">Dashboard</Link></li>
                         )}
                         <li><Link to="/real-estate" className="block py-2">Real Estate</Link></li>

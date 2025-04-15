@@ -155,7 +155,7 @@ export default function overviewCmp({detailsOverviews}) {
               </ul>
             </div>
             {/* property video  */}
-            <div className="property__video my-10">
+            {/* <div className="property__video my-10">
             <div className="text-xl font-bold mt-10 mb-5">
                 Property Video
             </div>
@@ -169,7 +169,7 @@ export default function overviewCmp({detailsOverviews}) {
   />
             </div>
             
-            </div>
+            </div> */}
             <ScheduleTour
             />
             <Comments/>

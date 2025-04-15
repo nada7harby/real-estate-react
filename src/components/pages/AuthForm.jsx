@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bgImage from "../../assets/images/login-modal.jpg";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../common/AuthContext";
 
 const AuthForm = ({ mode, setMode, onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { login } = useAuth();
   const isLogin = mode === "login";
 
   const [email, setEmail] = useState("");
@@ -58,14 +59,12 @@ const AuthForm = ({ mode, setMode, onClose }) => {
           const user = jsonUsers.find((u) => u.email === email && u.password === password);
 
           if (user) {
-            // Store user data in localStorage
-            localStorage.setItem('currentUser', JSON.stringify({
+            login({
               id: user.id,
               username: user.username,
               email: user.email,
               role: user.role
-            }));
-
+            });
             navigate("/");
             onClose();
             return;
@@ -76,14 +75,12 @@ const AuthForm = ({ mode, setMode, onClose }) => {
           const localStorageUser = localStorageUsers.find((u) => u.email === email && u.password === password);
 
           if (localStorageUser) {
-            // Store user data in localStorage
-            localStorage.setItem('currentUser', JSON.stringify({
+            login({
               id: localStorageUser.id,
               username: localStorageUser.username,
               email: localStorageUser.email,
-              role: localStorageUser.role || 'user' // Default role for localStorage users
-            }));
-
+              role: localStorageUser.role || 'user'
+            });
             navigate("/");
             onClose();
             return;
@@ -110,13 +107,12 @@ const AuthForm = ({ mode, setMode, onClose }) => {
           const localStorageUser = localStorageUsers.find((u) => u.email === email && u.password === password);
 
           if (localStorageUser) {
-            localStorage.setItem('currentUser', JSON.stringify({
+            login({
               id: localStorageUser.id,
               username: localStorageUser.username,
               email: localStorageUser.email,
               role: localStorageUser.role || 'user'
-            }));
-
+            });
             navigate("/");
             onClose();
             return;
@@ -153,23 +149,23 @@ const AuthForm = ({ mode, setMode, onClose }) => {
 
           // Add new user to localStorage
           const newUser = {
-            id: Date.now(), // Generate unique ID
+            id: Date.now(),
             username,
             email,
             password,
-            role: 'user' // Default role for new users
+            role: 'user'
           };
 
           localStorageUsers.push(newUser);
           localStorage.setItem("users", JSON.stringify(localStorageUsers));
 
-          // Store current user data
-          localStorage.setItem('currentUser', JSON.stringify({
+          // Login the new user
+          login({
             id: newUser.id,
             username: newUser.username,
             email: newUser.email,
             role: newUser.role
-          }));
+          });
 
           Swal.fire({
             title: 'Account created successfully!',
@@ -205,13 +201,13 @@ const AuthForm = ({ mode, setMode, onClose }) => {
           localStorageUsers.push(newUser);
           localStorage.setItem("users", JSON.stringify(localStorageUsers));
 
-          // Store current user data
-          localStorage.setItem('currentUser', JSON.stringify({
+          // Login the new user
+          login({
             id: newUser.id,
             username: newUser.username,
             email: newUser.email,
             role: newUser.role
-          }));
+          });
 
           Swal.fire({
             title: 'Account created successfully!',
