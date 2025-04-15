@@ -1,16 +1,13 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './components/pages/Home'
-import Dashboard from './components/pages/Dashboard'
-// import PropertySingle from './components/pages/PropertySingle'
-// import Contact from './components/pages/Contact'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { Suspense } from 'react'
 import NavBar from './components/layout/NavBar'
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import ComparePage from './components/pages/ComparePage';
-import PropertiesGridPage from './components/pages/PropertiesGridPage';
-import { FavoriteProvider } from './components/common/FavoriteContext'; 
-import { PropertiesProvider } from './components/common/PropertiesContext';
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { FavoriteProvider } from './components/common/FavoriteContext'
+import { PropertiesProvider } from './components/common/PropertiesContext'
 import Footer from './components/layout/Footer'
+import { allRoutes } from './routes'
+import LoadingSpinner from './components/common/LoadingSpinner'
 
 function App() {
   const theme = createTheme({
@@ -18,13 +15,13 @@ function App() {
       MuiSvgIcon: {
         styleOverrides: {
           root: {
-            color: '#1cb3ff', 
+            color: '#1cb3ff',
           },
         },
       },
     },
   });
-  
+
   return (
     <ThemeProvider theme={theme}>
       <PropertiesProvider>
@@ -33,14 +30,19 @@ function App() {
             <div className="min-h-screen flex flex-col">
               <NavBar />
               <main className="flex-grow">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/PropertiesGridPage" element={<PropertiesGridPage/>} />
-                  <Route path="/compared" element={<ComparePage />} />
-                  {/* <Route path="/property-single" element={<PropertySingle />} />
-                  <Route path="/contact" element={<Contact />} /> */}
-                </Routes>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Routes>
+                    {allRoutes.map((route) => (
+                      <Route
+                        key={route.path}
+                        path={route.path}
+                        element={route.element}
+                      />
+                    ))}
+                    {/* Catch all route - redirect to home */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </Suspense>
               </main>
               <Footer />
             </div>
