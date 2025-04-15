@@ -1,33 +1,64 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import BathtubOutlinedIcon from "@mui/icons-material/BathtubOutlined";
 import HotelOutlinedIcon from "@mui/icons-material/HotelOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
-import CropSquareOutlinedIcon from '@mui/icons-material/CropSquareOutlined';
-import { useCompare } from "./CompareContext"; 
+import CropSquareOutlinedIcon from "@mui/icons-material/CropSquareOutlined";
+import { useCompare } from "./CompareContext";
 import { useFavorite } from "./FavoriteContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const PropertyCard = ({
-  id, images, title, address, type, price, beds, baths, size, added, status,
+  id,
+  images,
+  title,
+  address,
+  type,
+  price,
+  beds,
+  baths,
+  size,
+  added,
+  status,
 }) => {
   const { compareList, addToCompare } = useCompare();
   const { toggleFavorite, isFavorite } = useFavorite();
   const navigate = useNavigate();
-  const isFav = isFavorite(id); 
+  const isFav = isFavorite(id);
 
   const handleFav = (e) => {
     e.stopPropagation();
     toggleFavorite({
-      id, images, title, address, type, price, beds, baths, size, added, status,
+      id,
+      images,
+      title,
+      address,
+      type,
+      price,
+      beds,
+      baths,
+      size,
+      added,
+      status,
     });
   };
 
   const handleCompareClick = (e) => {
     e.stopPropagation();
     addToCompare({
-      id, images, title, address, type, price, beds, baths, size, added, status,
+      id,
+      images,
+      title,
+      address,
+      type,
+      price,
+      beds,
+      baths,
+      size,
+      added,
+      status,
     });
   };
 
@@ -53,18 +84,18 @@ const PropertyCard = ({
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return '';
+    if (!dateString) return "";
     try {
       const date = new Date(dateString);
       return date.toLocaleDateString();
     } catch (error) {
-      console.error('Error formatting date:', error);
+      console.error("Error formatting date:", error);
       return dateString;
     }
   };
 
   return (
-    <div 
+    <div
       className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
       onClick={handleCardClick}
     >
@@ -75,7 +106,9 @@ const PropertyCard = ({
           {(Array.isArray(status) ? status : [status]).map((tag, i) => (
             <span
               key={i}
-              className={`text-xs font-semibold px-3 py-1 rounded-full shadow ${getStatusColor(tag)}`}
+              className={`text-xs font-semibold px-3 py-1 rounded-full shadow ${getStatusColor(
+                tag
+              )}`}
             >
               {tag}
             </span>
@@ -83,10 +116,20 @@ const PropertyCard = ({
         </div>
 
         <div className="absolute bottom-2 right-2 flex gap-2">
-          <button onClick={handleFav} className="bg-white p-2 rounded-full shadow hover:bg-blue-100">
-            {isFav ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon />}
+          <button
+            onClick={handleFav}
+            className="bg-white p-2 rounded-full shadow hover:bg-blue-100"
+          >
+            {isFav ? (
+              (() => {
+                Swal.fire("Added to Favourites");
+                return <FavoriteIcon style={{ color: "red" }} />;
+              })()
+            ) : (
+              <FavoriteBorderOutlinedIcon />
+            )}
           </button>
-          
+
           <button
             onClick={handleCompareClick}
             className="bg-white p-2 rounded-full shadow hover:bg-blue-100"
@@ -116,9 +159,15 @@ const PropertyCard = ({
           <span>
             <BathtubOutlinedIcon /> {baths}
           </span>
-          <span><CropSquareOutlinedIcon /> {size} sq ft</span>
+          <span>
+            <CropSquareOutlinedIcon /> {size} sq ft
+          </span>
         </div>
-        {added && <p className="text-xs text-gray-400 mt-2">Added: {formatDate(added)}</p>}
+        {added && (
+          <p className="text-xs text-gray-400 mt-2">
+            Added: {formatDate(added)}
+          </p>
+        )}
       </div>
     </div>
   );
