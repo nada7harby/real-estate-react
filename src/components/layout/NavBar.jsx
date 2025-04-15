@@ -123,7 +123,7 @@ const NavBar = () => {
 
             {/* Side Menu */}
             {menuOpen && (
-                <div className="fixed top-0 left-0 w-64 h-full bg-blue-300 text-white shadow-lg z-50 transition-transform">
+                <div className="fixed top-0 left-0 w-64 h-full bg-blue-500 text-white shadow-lg z-50 transition-transform">
                     <div className="flex justify-end p-4">
                         <Close
                             fontSize="large"
@@ -136,8 +136,8 @@ const NavBar = () => {
                             <li><Link to="/dashboard" className="block py-2">Dashboard</Link></li>
                         )}
                         <li><Link to="/real-estate" className="block py-2">Real Estate</Link></li>
-                        <li><Link to="/property-single" className="block py-2">Property Single</Link></li>
-                        <li><Link to="/blog" className="block py-2">Blog</Link></li>
+                        {/* <li><Link to="/property-single" className="block py-2">Real Estate</Link></li> */}
+                        {/* <li><Link to="/blog" className="block py-2">Blog</Link></li> */}
                         <li><Link to="/contact" className="block py-2">Contact</Link></li>
                     </ul>
                 </div>
