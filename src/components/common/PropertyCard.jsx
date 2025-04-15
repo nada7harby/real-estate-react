@@ -30,6 +30,9 @@ const PropertyCard = ({
 
   const handleFav = (e) => {
     e.stopPropagation();
+    if (!isFav) {
+      Swal.fire("Added to Favourites");
+    }
     toggleFavorite({
       id,
       images,
@@ -122,7 +125,7 @@ const PropertyCard = ({
           >
             {isFav ? (
               (() => {
-                Swal.fire("Added to Favourites");
+              
                 return <FavoriteIcon style={{ color: "red" }} />;
               })()
             ) : (
