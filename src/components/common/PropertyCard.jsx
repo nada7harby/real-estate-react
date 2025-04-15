@@ -30,6 +30,16 @@ const PropertyCard = ({
 
   const handleFav = (e) => {
     e.stopPropagation();
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please Login',
+        text: 'You need to login to add properties to favorites'
+      });
+      return;
+    }
     if (!isFav) {
       Swal.fire("Added to Favourites");
     }
@@ -50,6 +60,15 @@ const PropertyCard = ({
 
   const handleCompareClick = (e) => {
     e.stopPropagation();
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please Login',
+        text: 'You need to login to compare properties'
+      });
+      return;
+    }
     addToCompare({
       id,
       images,
