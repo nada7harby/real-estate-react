@@ -1,0 +1,184 @@
+{
+  "agents": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "position": "Senior Agent",
+      "email": "john.doe@example.com",
+      "phone": "+1 234 567 890",
+      "rating": 4.8,
+      "reviews": 128,
+      "image": "/images/agents/agent1.jpg",
+      "properties": [
+        {
+          "id": "1",
+          "title": "Luxury Villa in Beverly Hills",
+          "price": 2500000,
+          "status": "For Sale",
+          "type": "Villa",
+          "address": "123 Beverly Hills, CA 90210",
+          "images": ["property1.jpg", "property2.jpg"]
+        },
+        {
+          "id": "2",
+          "title": "Modern Apartment in Downtown",
+          "price": 1500,
+          "status": "For Rent",
+          "type": "Apartment",
+          "address": "456 Downtown Ave, CA 90001",
+          "images": ["property3.jpg", "property4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "position": "Junior Agent",
+      "email": "jane.smith@example.com",
+      "phone": "+1 234 567 891",
+      "rating": 4.5,
+      "reviews": 95,
+      "image": "/images/agents/agent2.jpg",
+      "properties": [
+        {
+          "id": "3",
+          "title": "Family House in Suburbs",
+          "price": 750000,
+          "status": "For Sale",
+          "type": "House",
+          "address": "789 Suburb St, CA 90002",
+          "images": ["property5.jpg", "property6.jpg"]
+        },
+        {
+          "id": "4",
+          "title": "Cozy Studio in Midtown",
+          "price": 1200,
+          "status": "For Rent",
+          "type": "Studio",
+          "address": "321 Midtown Blvd, CA 90003",
+          "images": ["property7.jpg", "property8.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Alice Johnson",
+      "position": "Agent",
+      "email": "alice.johnson@example.com",
+      "phone": "+1 234 567 892",
+      "rating": 4.6,
+      "reviews": 102,
+      "image": "/images/agents/agent3.jpg",
+      "properties": [
+        {
+          "id": "5",
+          "title": "Beachfront Condo",
+          "price": 1800000,
+          "status": "For Sale",
+          "type": "Condo",
+          "address": "987 Ocean Dr, CA 90211",
+          "images": ["property9.jpg", "property10.jpg"]
+        },
+        {
+          "id": "6",
+          "title": "Downtown Loft",
+          "price": 2200,
+          "status": "For Rent",
+          "type": "Loft",
+          "address": "654 Urban Ln, CA 90004",
+          "images": ["property11.jpg", "property12.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Michael Brown",
+      "position": "Senior Agent",
+      "email": "michael.brown@example.com",
+      "phone": "+1 234 567 893",
+      "rating": 4.9,
+      "reviews": 143,
+      "image": "/images/agents/agent4.jpg",
+      "properties": [
+        {
+          "id": "7",
+          "title": "Penthouse with City View",
+          "price": 3000000,
+          "status": "For Sale",
+          "type": "Penthouse",
+          "address": "101 Skyline Rd, CA 90212",
+          "images": ["property13.jpg", "property14.jpg"]
+        },
+        {
+          "id": "8",
+          "title": "Suburban Townhouse",
+          "price": 1900,
+          "status": "For Rent",
+          "type": "Townhouse",
+          "address": "202 Quiet Ln, CA 90005",
+          "images": ["property15.jpg", "property16.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Emily Davis",
+      "position": "Agent",
+      "email": "emily.davis@example.com",
+      "phone": "+1 234 567 894",
+      "rating": 4.4,
+      "reviews": 87,
+      "image": "/images/agents/agent5.jpg",
+      "properties": [
+        {
+          "id": "9",
+          "title": "Modern Duplex",
+          "price": 850000,
+          "status": "For Sale",
+          "type": "Duplex",
+          "address": "303 Twin St, CA 90006",
+          "images": ["property17.jpg", "property18.jpg"]
+        },
+        {
+          "id": "10",
+          "title": "Chic Flat in Arts District",
+          "price": 1600,
+          "status": "For Rent",
+          "type": "Flat",
+          "address": "404 Art Blvd, CA 90007",
+          "images": ["property19.jpg", "property20.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Chris Evans",
+      "position": "Junior Agent",
+      "email": "chris.evans@example.com",
+      "phone": "+1 234 567 895",
+      "rating": 4.3,
+      "reviews": 76,
+      "image": "/images/agents/agent6.jpg",
+      "properties": [
+        {
+          "id": "11",
+          "title": "Mountain Cabin Retreat",
+          "price": 600000,
+          "status": "For Sale",
+          "type": "Cabin",
+          "address": "505 Peak Rd, CA 90008",
+          "images": ["property21.jpg", "property22.jpg"]
+        },
+        {
+          "id": "12",
+          "title": "Urban Micro Apartment",
+          "price": 1000,
+          "status": "For Rent",
+          "type": "Micro Apartment",
+          "address": "606 Compact Ln, CA 90009",
+          "images": ["property23.jpg", "property24.jpg"]
+        }
+      ]
+    }
+  ]
+}
