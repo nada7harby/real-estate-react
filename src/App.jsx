@@ -96,7 +96,7 @@ function App() {
                             />
                           } 
                         />
-                        <Route path="/favorites" element={<MyFavorites />} />
+                        <Route path="/MyFavorites" element={<MyFavorites />} />
                         <Route path="/compare" element={<Compare />} />
                         <Route path="/compared" element={<ComparePage />} />
                         <Route path="/testimonials" element={<ClientTestimonials />} />
