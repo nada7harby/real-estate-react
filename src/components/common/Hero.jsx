@@ -45,7 +45,7 @@ export default function Hero() {
 
       {/* Property Slider */}
       <div className="relative w-full mx-auto min-h-screen">
-        <div className="relative aspect-[2/1] w-full rounded-xl">
+        <div className="relative aspect-[2/1] w-full rounded-xl h-dvh ">
           <img
             src={images[currentIndex]}
             alt={`Property view ${currentIndex + 1}`}

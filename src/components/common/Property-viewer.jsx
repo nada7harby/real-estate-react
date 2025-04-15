@@ -100,9 +100,10 @@ export const PropertyViewer = ({ properties }) => {
           </div>
 
           <div className="p-6  relative ">
-            <div className="flex items-start justify-between mb-4">
+            <div className="lg:flex items-start justify-between mb-4">
               <div>
-                <div className="flex gap-2 mb-2">
+               <div className="lg:flex">
+               <div className="flex gap-2 mb-2">
                   <Chip label="For Sale" sx={{ background: "white" }} />
                   <Chip label="Featured" color="primary" />
                   <Chip label="Trendy" color="warning" />
@@ -110,13 +111,14 @@ export const PropertyViewer = ({ properties }) => {
                 <h2 className="text-5xl font-semibold mb-2">
                   {currentProperty.title}
                 </h2>
+               </div>
                 <div className="flex items-center gap-1 text-default-500">
                   <Icon
                     icon="lucide:map-pin"
                     className="text-blue-400"
                     style={{ fontSize: "20px" }}
                   />
-                  <span className="text-2xl">{currentProperty.location}</span>
+                  <span className="text-2xl">{currentProperty.address}</span>
                 </div>
               </div>
               <div className="text-right">
@@ -129,18 +131,18 @@ export const PropertyViewer = ({ properties }) => {
               </div>
             </div>
 
-            <div className="flex gap-7 mb-6 lg:absolute  mt-2 -left-15  ">
-              <div className="flex items-center gap-2 bg-white rounded-md p-3">
+            <div className="lg:flex gap-7 mb-6 lg:absolute  mt-2 -left-15  ">
+              <div className="flex items-center gap-2 bg-white rounded-md p-3 my-1">
                 <Icon icon="lucide:bed" className="text-default-500" />
-                <span>{currentProperty.beds}</span>
+                <span>{currentProperty.overview.bedrooms}</span>
               </div>
-              <div className="flex items-center gap-2 bg-white rounded-md p-3">
+              <div className="flex items-center gap-2 bg-white rounded-md p-3 my-1">
                 <Icon icon="lucide:bath" className="text-default-500" />
-                <span>{currentProperty.baths}</span>
+                <span>{currentProperty.overview.bathrooms}</span>
               </div>
-              <div className="flex items-center gap-2 bg-white rounded-md p-3">
+              <div className="flex items-center gap-2 bg-white rounded-md p-3 my-1">
                 <Icon icon="lucide:square" className="text-default-500" />
-                <span>{formatNumber(currentProperty.sqft)} sq ft</span>
+                <span>{formatNumber(currentProperty.overview.lotSize)} sq ft</span>
               </div>
             </div>
 
