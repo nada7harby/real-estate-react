@@ -4,9 +4,11 @@ import MapFullWidth from "../common/MapFullWidth";
 import ComparePanel from "../common/ComparePanal";
 import SearchBar from "../common/SearchBar";
 import { useProperties } from "../common/PropertiesContext";
+import { useNavigate } from "react-router-dom";
 
 const PropertiesGridPage = () => {
   const { properties } = useProperties();
+  const navigate = useNavigate();
   const [filteredProperties, setFilteredProperties] = useState(properties);
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 6;
@@ -35,6 +37,10 @@ const PropertiesGridPage = () => {
     setCurrentPage(1);
   };
 
+  const handlePropertyClick = (propertyId) => {
+    navigate(`/property/${propertyId}`);
+  };
+
   const totalPages = Math.ceil(filteredProperties.length / propertiesPerPage);
   const startIndex = (currentPage - 1) * propertiesPerPage;
   const endIndex = startIndex + propertiesPerPage;
@@ -56,7 +62,13 @@ const PropertiesGridPage = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         {currentProperties.map((property) => (
-          <PropertyCard key={property.id} {...property} />
+          <div 
+            key={property.id} 
+            onClick={() => handlePropertyClick(property.id)}
+            className="cursor-pointer"
+          >
+            <PropertyCard {...property} />
+          </div>
         ))}
       </div>
 

@@ -56,7 +56,7 @@ export default function Agent({agentsDetails}) {
                 >
                   {agent.name}
                 </Typography>
-                <Typography
+                {/* <Typography
                   variant="body1"
                   component="a"
                   sx={{
@@ -69,7 +69,7 @@ export default function Agent({agentsDetails}) {
                   }}
                 >
                   View My Listings
-                </Typography>
+                </Typography> */}
               </Stack>
             </Stack>
             <Box>

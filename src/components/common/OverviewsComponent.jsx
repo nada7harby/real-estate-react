@@ -11,7 +11,7 @@ import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 export default function OverviewsComponent({details}) {
-    console.log(details);
+    // console.log(details);
     let overviews = [
         {
           name: "Bedrooms",
@@ -66,7 +66,7 @@ export default function OverviewsComponent({details}) {
           flexItem
         />
         <p className="font-bold  text-lg text-gray-400">
-          Property ID : RH-2015-06
+          Property ID : {details.id}
         </p>
         <Chip
           label="Featured"

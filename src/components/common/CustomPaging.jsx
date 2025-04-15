@@ -26,12 +26,12 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-     className={imagesSliderStyles["next-button"]}
+      className={imagesSliderStyles["next-button"]}
       onClick={onClick}
       style={{
         "&:hover": {
-        backgroundColor: "#1db2ff !important",
-      },
+          backgroundColor: "#1db2ff !important",
+        },
       }}
     >
       <NavigateNextIcon color="white" style={{ color: "white" }} />
@@ -42,28 +42,30 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-     className={imagesSliderStyles["prev-button"]}
+      className={imagesSliderStyles["prev-button"]}
       onClick={onClick}
       style={{
         "&:hover": {
-        backgroundColor: "#1db2ff !important",
-      },
+          backgroundColor: "#1db2ff !important",
+        },
       }}
-      >
-      <NavigateBeforeIcon color="white"
-       style={{
-       color: "white",
-       
-      }} />
+    >
+      <NavigateBeforeIcon
+        color="white"
+        style={{
+          color: "white",
+        }}
+      />
     </div>
   );
 }
 function CustomPaging(props) {
- let images = props.images;
- console.log(props);
+  console.log(props);
+
+  let images = props.images.images;
+  console.log(props);
   const sliderRef = useRef(null);
   const settings = {
-
     dotsClass: `slick-dots slick-thumb ${imagesSliderStyles["slick-dots"]}`,
     infinite: true,
     speed: 500,
@@ -176,10 +178,10 @@ function CustomPaging(props) {
                           fontWeight: "bold",
                         }}
                       >
-                        Home in Merrick Way
+                        {props.images.title}
                       </Typography>
                       <Chip
-                        label="$540,000"
+                        label={props.images.price}
                         component="a"
                         href="#basic-chip"
                         sx={{
@@ -210,7 +212,7 @@ function CustomPaging(props) {
                           gutterBottom
                           sx={{ color: "rgba(255, 255, 255, 0.75)" }}
                         >
-                          Merrick Way, Miami, FL 33134, USA
+                          {props.images.address}
                         </Typography>
                       </Stack>
                       <Stack direction="row" spacing={1}>
@@ -278,10 +280,7 @@ function CustomPaging(props) {
                     </Stack>
                   </div>
                 </div>
-
-
               </div>
-              
             );
           })}
         </Slider>

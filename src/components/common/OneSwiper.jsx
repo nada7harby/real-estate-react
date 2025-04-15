@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, Button, Chip } from "@mui/material";
 import { Icon } from "@iconify/react";
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import { useNavigate } from "react-router-dom";
 
 export default function OneSwiper({ property }) {
+  const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
 
   // Check if property is favorite when component mounts
@@ -31,9 +33,13 @@ export default function OneSwiper({ property }) {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   };
 
+  const handlePropertyClick = () => {
+    navigate(`/property/${property.id}`);
+  };
+
   return (
     <div className="p-4">
-      <Card className="max-w-md">
+      <Card className="max-w-md cursor-pointer" onClick={handlePropertyClick}>
         <div className="relative">
           <img
             src={property.images[0]}
@@ -91,7 +97,10 @@ export default function OneSwiper({ property }) {
           <div className="absolute bottom-3 right-3 flex gap-2">
             <Button
               variant="contained"
-              onClick={toggleFavorite}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleFavorite();
+              }}
               sx={{
                 minWidth: "50px",
                 width: "50px",
@@ -115,6 +124,10 @@ export default function OneSwiper({ property }) {
             </Button>
             <Button
               variant="contained"
+              onClick={(e) => {
+                e.stopPropagation();
+                // Add compare functionality here
+              }}
               sx={{
                 minWidth: "50px",
                 width: "50px",
