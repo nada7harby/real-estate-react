@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, Button, Chip } from "@mui/material";
 import { Icon } from "@iconify/react";
 import { PropertyViewer } from "./Property-viewer";
-import { properties } from "../../assets/Data/properties.js";
+import { properties } from "../../assets/Data/properties.json";
 
 export default function AllProperties() {
   return (

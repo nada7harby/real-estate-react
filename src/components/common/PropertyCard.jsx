@@ -52,6 +52,17 @@ const PropertyCard = ({
     }
   };
 
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return dateString;
+    }
+  };
+
   return (
     <div 
       className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
@@ -107,7 +118,7 @@ const PropertyCard = ({
           </span>
           <span><CropSquareOutlinedIcon /> {size} sq ft</span>
         </div>
-        {added && <p className="text-xs text-gray-400 mt-2">Added: {added}</p>}
+        {added && <p className="text-xs text-gray-400 mt-2">Added: {formatDate(added)}</p>}
       </div>
     </div>
   );

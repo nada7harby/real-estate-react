@@ -33,13 +33,18 @@ export const PropertyViewer = ({ properties }) => {
     setActiveImageIndex(0);
   };
 
+  const formatNumber = (value) => {
+    if (value === undefined || value === null) return '0';
+    return value.toLocaleString();
+  };
+
   return (
     <div className="space-y-4  ">
       <Card className="overflow-hidden" style={{ boxShadow: "none" }}>
         <CardContent className="p-0 lg:flex  bg-blue-100  ">
           <div className="relative ">
             <img
-              src={`/images/${currentProperty.images[activeImageIndex]}`}
+              src={`${currentProperty.images[activeImageIndex]}`}
               alt={currentProperty.title}
               className="w-full h-[400px] object-cover"
             />
@@ -116,7 +121,7 @@ export const PropertyViewer = ({ properties }) => {
               </div>
               <div className="text-right">
                 <div className="text-2xl font-bold text-primary-500">
-                  ${currentProperty.price.toLocaleString()}
+                  ${formatNumber(currentProperty.price)}
                 </div>
                 <div className="text-sm text-default-500">
                   Build {currentProperty.buildYear}
@@ -135,7 +140,7 @@ export const PropertyViewer = ({ properties }) => {
               </div>
               <div className="flex items-center gap-2 bg-white rounded-md p-3">
                 <Icon icon="lucide:square" className="text-default-500" />
-                <span>{currentProperty.sqft.toLocaleString()} sq ft</span>
+                <span>{formatNumber(currentProperty.sqft)} sq ft</span>
               </div>
             </div>
 
@@ -194,7 +199,7 @@ export const PropertyViewer = ({ properties }) => {
                 }`}
               >
                 <img
-                  src={`/images/${property.images[0]}`}
+                  src={`${property.images[0]}`}
                   alt={property.title}
                   className="w-32 h-24 object-cover rounded-lg"
                 />
