@@ -266,7 +266,14 @@ export default function Dashboard() {
       return;
     }
 
-    const success = await addProperty(newProperty);
+    // Generate a unique ID for the new property
+    const newId = Date.now().toString();
+    const propertyToAdd = {
+      ...newProperty,
+      id: newId,
+    };
+
+    const success = await addProperty(propertyToAdd);
     if (success) {
       setNewProperty({
         id: "",
@@ -377,7 +384,14 @@ export default function Dashboard() {
               icon: <Person />,
               color: "#9C27B0",
             },
-           
+            {
+              title: "Average Agent Rating",
+              value: (
+                agents.reduce((sum, a) => sum + a.rating, 0) / agents.length
+              ).toFixed(1),
+              icon: <Star />,
+              color: "#FF9800",
+            },
             {
               title: "Successful Payments",
               value: paymentCount,
@@ -403,13 +417,7 @@ export default function Dashboard() {
                       {stat.value}
                     </Typography>
                   </Box>
-                  <Avatar sx={{ bgcolor: stat.color }}>
-                    {React.isValidElement(stat.icon)
-                      ? React.cloneElement(stat.icon, {
-                          style: { color: "white" },
-                        })
-                      : stat.icon}
-                  </Avatar>{" "}
+                  <Avatar sx={{ bgcolor: stat.color }}>{stat.icon}</Avatar>
                 </CardContent>
               </Card>
             </Grid>
