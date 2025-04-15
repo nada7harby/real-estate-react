@@ -7,13 +7,15 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import defaultImage from "../../assets/images/default-profile.png";
+
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = React.useState([]);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
-
+  
   React.useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -33,8 +35,8 @@ export default function Testimonials() {
           name: message.name,
           role: "Client",
           quote: message.message,
-          description: `Contact: ${message.email} | Phone: ${message.phone}`,
-          avatar: "https://mui.com/static/images/avatar/1.jpg" // Default avatar for clients
+          //description: `Contact: ${message.email} | Phone: ${message.phone}`,
+          avatar: message.image || defaultImage// Default avatar for clients
         }));
 
         // Combine JSON testimonials with client messages
