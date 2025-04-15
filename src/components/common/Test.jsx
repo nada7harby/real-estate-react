@@ -44,12 +44,12 @@ const agents = [
 function Example() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
+      {/* <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-bold">Meet Our Agents</h2>
         <Button color="primary" variant="light" size="sm">
           View All
         </Button>
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {agents.map((agent) => (
