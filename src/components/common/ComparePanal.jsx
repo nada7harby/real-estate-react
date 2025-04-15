@@ -14,7 +14,7 @@ const ComparePanel = () => {
 
   const isComparePage = location.pathname === "/compare";
   return (
-    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
+    <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
       <div className="flex justify-end">
         <button
           onClick={() => setIsOpen(!isOpen)}

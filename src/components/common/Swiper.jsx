@@ -6,6 +6,7 @@ import "../../styles/components/Swiper.css";
 import { Pagination } from "swiper/modules";
 import OneSwiper from "./OneSwiper";
 import { useProperties } from "./PropertiesContext";
+import PropertyCard from "./PropertyCard";
 
 export default function OurSwiper() {
   const { properties } = useProperties();
@@ -34,7 +35,8 @@ export default function OurSwiper() {
       >
         {properties.map((property) => (
           <SwiperSlide key={property.id}>
-            <OneSwiper property={property} />
+            {/* <OneSwiper property={property} /> */}
+            <PropertyCard {...property} />
           </SwiperSlide>
         ))}
       </Swiper>

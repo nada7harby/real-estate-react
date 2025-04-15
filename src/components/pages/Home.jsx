@@ -7,6 +7,7 @@ import Testimonials from "../common/Testimonials";
 import Banner from "../common/Banner";
 import Example from "../common/Test";
 import NavBar from "../layout/NavBar";
+import ComparePanel from "../common/ComparePanal";
 
 export default function Home() {
   return (
@@ -26,6 +27,8 @@ export default function Home() {
       <Testimonials />
       <Banner></Banner>
       <Example></Example>
+      <ComparePanel />
+
     </>
   );
 }
