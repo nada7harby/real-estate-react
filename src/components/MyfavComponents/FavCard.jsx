@@ -4,6 +4,7 @@ import BedIcon from "@mui/icons-material/Bed";
 import ShowerIcon from "@mui/icons-material/Shower";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { Link } from "react-router-dom";
 
 const FavCard = () => {
   const { favorites, toggleFavorite } = useFavorite();
@@ -13,9 +14,9 @@ const FavCard = () => {
       {/* Breadcrumb and Header */}
       <div className="container mx-auto px-4 py-6">
         <div className="text-sm text-gray-600 mb-2">
-          <a href="#" className="hover:text-blue-600 font-bold">
+          <Link to="/" className="hover:text-blue-400 font-bold">
             Home
-          </a>{" "}
+          </Link>
           <ChevronRightIcon />
           <span className="text-blue-800 font-bold">My Favorites</span>
         </div>
@@ -96,11 +97,10 @@ const FavCard = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span
-                            className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                              property.status?.includes("For Rent")
+                            className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${property.status?.includes("For Rent")
                                 ? "bg-blue-100 text-blue-800"
                                 : "bg-green-100 text-green-800"
-                            }`}
+                              }`}
                           >
                             {property.status || "For Sale"}
                           </span>
@@ -115,7 +115,7 @@ const FavCard = () => {
                             <span className="text-lg font-bold text-gray-900">
                               {property.price}
                             </span>
-                            <button 
+                            <button
                               onClick={() => toggleFavorite(property)}
                               className="ml-4 px-3 py-1 bg-red-50 text-red-600 hover:bg-red-100 text-sm font-medium rounded-md transition-colors"
                             >
@@ -180,11 +180,10 @@ const FavCard = () => {
                                 Status
                               </span>
                               <span
-                                className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                                  property.status?.includes("For Rent")
+                                className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${property.status?.includes("For Rent")
                                     ? "bg-blue-100 text-blue-800"
                                     : "bg-green-100 text-green-800"
-                                }`}
+                                  }`}
                               >
                                 {property.status || "For Sale"}
                               </span>
@@ -221,7 +220,7 @@ const FavCard = () => {
                                 Published
                               </span>
                             </div>
-                            <button 
+                            <button
                               onClick={() => toggleFavorite(property)}
                               className="px-3 py-1 bg-red-50 text-red-600 hover:bg-red-100 text-sm font-medium rounded-md transition-colors"
                             >
@@ -276,11 +275,10 @@ const FavCard = () => {
                               Status
                             </span>
                             <span
-                              className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                                property.status?.includes("For Rent")
+                              className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${property.status?.includes("For Rent")
                                   ? "bg-blue-100 text-blue-800"
                                   : "bg-green-100 text-green-800"
-                              }`}
+                                }`}
                             >
                               {property.status || "For Sale"}
                             </span>
